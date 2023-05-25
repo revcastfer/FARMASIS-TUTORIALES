@@ -10,7 +10,7 @@ import axios from 'axios'
 
 
 const ErrorValidacion=styled.span`color:red;font-size:13px;display:inline;visibility:hidden`;
->>>>>>> c284003 (habilitacion de ruta para catagorias , ordenamineto de carpeta redux, creacion de ruta front upload)
+
 
 const Formulario=styled.form`
 width:50%;
@@ -30,8 +30,15 @@ const TipoDatos=styled.div`
 color:#09b5c1;
 font-size:20px`; 
 
-const butonStyle={width: "80px", padding:"8px", borderRadius:"8px",
-border:"none", backgroundColor:"#09b5c1",display:"block"};
+const ButonStyle=styled.button`  
+width: 80px;
+padding:8px;
+border-radius:8px;
+border:none;
+background-color:#09b5c1;
+display:block
+
+`
 
 
 const Contenedor=styled.div`
@@ -75,7 +82,6 @@ let ValidateReadyForSend=()=>{
      if(suma===7){return true} else return false};
 
 
->>>>>>> c284003 (habilitacion de ruta para catagorias , ordenamineto de carpeta redux, creacion de ruta front upload)
 let nombre=document.getElementById("nombre");
 let apellido=document.getElementById("apellido");
 let numero=document.getElementById("numero");
@@ -176,7 +182,7 @@ return(
 		<ImputsReferidos id="nombreReferido" onChange={validate} placeholder="Nombre del referido:" type="text"/><ErrorValidacion id="nombreReferidoVal">verificar nombre</ErrorValidacion>
 		<ImputsReferidos id="apellidoReferido" onChange={validate} placeholder="Apellido del referido" type="text"/><ErrorValidacion id="apellidoReferidoVal">verificar apellido</ErrorValidacion>
 		<ImputsReferidos id="numeroReferido" onChange={validate} placeholder="Numero de contacto del referido" type="phone"/><ErrorValidacion id="numeroReferidoVal">solo numeros</ErrorValidacion>
-		<button style={butonStyle}>enviar</button>
+		<ButonStyle >enviar</ButonStyle>
 		</div>
 
 		</Formulario>
@@ -194,4 +200,4 @@ return(
 		)
 }
 
-export {Referidos,ImputsReferidos,Formulario}
+export {Referidos,ImputsReferidos,Formulario,ButonStyle,ErrorValidacion}
