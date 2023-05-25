@@ -28,9 +28,9 @@ let sendVideo=(e)=>{e.preventDefault()}
 
 
 	return(
-<Formulario onSubmit={sendVideo} >
+<Formulario  onSubmit={sendVideo} >
 
-<ImputsReferidos onChange={handleChange} id="nombre" placeholder="ingrese nombre del video"/><ErrorValidacion id="errornombre">revisar nombre</ErrorValidacion>
+<ImputsReferidos style={{Width:"100%"}} onChange={handleChange} id="nombre" placeholder="ingrese nombre del video"/><ErrorValidacion id="errornombre">revisar nombre</ErrorValidacion>
 
 
 <select  style={{display:"block",margin:"15px"}} id="categoria">
@@ -38,12 +38,12 @@ let sendVideo=(e)=>{e.preventDefault()}
 {categorias.map( ele=><option value={ele.id}>{ele.descrip}</option> )}
 <option value={0}>nueva categoria</option>
 </select>
-<ErrorValidacion id="errorcategoria">selecionar categoria</ErrorValidacion>
+<ErrorValidacion style={{display:"block"}} id="errorcategoria">selecionar categoria</ErrorValidacion>
 
-<ImputsReferidos id="nuevaCategoria" onChange={handleChange} placeholder="ingrese nueva categoria"/><ErrorValidacion id="errornuevaCategoria">ingresar nueva categoria</ErrorValidacion>
+<ImputsReferidos style={{display:"block"}} id="nuevaCategoria" onChange={handleChange} placeholder="ingrese nueva categoria"/><ErrorValidacion id="errornuevaCategoria">ingresar nueva categoria</ErrorValidacion>
 
-<textarea id="descripcion" onChange={handleChange} rows="10" cols="40"placeholder="escribir la descripcion del video"></textarea>
-<ErrorValidacion id="errordescripcion">ingresar descripcion</ErrorValidacion>
+<textarea style={{display:"block",margin:"15px"}} id="descripcion" onChange={handleChange} rows="5" cols="30"placeholder="escribir la descripcion del video"></textarea>
+<ErrorValidacion style={{display:"block"}} id="errordescripcion">ingresar descripcion</ErrorValidacion>
 
 <ImputsReferidos id="video" onChange={handleChange} type="file" style={{border:"none",borderRadius:"0px"}}/>
 <ErrorValidacion id="errorvideo" >ingresar archivo de video</ErrorValidacion>
