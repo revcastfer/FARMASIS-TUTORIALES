@@ -7,9 +7,8 @@ import axios from 'axios'
 
 
 
-<<<<<<< HEAD
-const ErrorValidacion=styled.span`color:red;font-size:15px;display:inline`;
-=======
+
+
 const ErrorValidacion=styled.span`color:red;font-size:13px;display:inline;visibility:hidden`;
 >>>>>>> c284003 (habilitacion de ruta para catagorias , ordenamineto de carpeta redux, creacion de ruta front upload)
 
@@ -65,9 +64,8 @@ width:"100%"}
 
 
 
-<<<<<<< HEAD
-export default function Referidos(){
-=======
+
+
   export default function Referidos(){
 
 
@@ -129,9 +127,9 @@ break;
 
 }
 
-
-
 }
+
+
 
 
 let handleSubmit=(e)=>{
