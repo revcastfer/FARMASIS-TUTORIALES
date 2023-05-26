@@ -28,26 +28,26 @@ let sendVideo=(e)=>{e.preventDefault()}
 
 
 	return(
-<Formulario  onSubmit={sendVideo} >
+<Formulario style={{width:"500px"}}  onSubmit={sendVideo} >
 
 <ImputsReferidos style={{Width:"100%"}} onChange={handleChange} id="nombre" placeholder="ingrese nombre del video"/><ErrorValidacion id="errornombre">revisar nombre</ErrorValidacion>
 
 
-<select  style={{display:"block",margin:"15px"}} id="categoria">
+
+
+
+<textarea style={{margin:"15px",borderRadius:"5px"}} id="descripcion" onChange={handleChange} rows="5" cols="32"placeholder="escribir la descripcion del video"></textarea>
+<ErrorValidacion  id="errordescripcion">ingresar descripcion</ErrorValidacion>
+<select  style={{margin:"15px"}} id="categoria">
 <option value={0} disabled selected>selecionar categoria</option>
 {categorias.map( ele=><option value={ele.id}>{ele.descrip}</option> )}
 <option value={0}>nueva categoria</option>
 </select>
-<ErrorValidacion style={{display:"block"}} id="errorcategoria">selecionar categoria</ErrorValidacion>
-
-<ImputsReferidos style={{display:"block"}} id="nuevaCategoria" onChange={handleChange} placeholder="ingrese nueva categoria"/><ErrorValidacion id="errornuevaCategoria">ingresar nueva categoria</ErrorValidacion>
-
-<textarea style={{display:"block",margin:"15px"}} id="descripcion" onChange={handleChange} rows="5" cols="30"placeholder="escribir la descripcion del video"></textarea>
-<ErrorValidacion style={{display:"block"}} id="errordescripcion">ingresar descripcion</ErrorValidacion>
-
+<ErrorValidacion  id="errorcategoria">selecionar categoria</ErrorValidacion>
+<ImputsReferidos  id="nuevaCategoria" onChange={handleChange} placeholder="ingrese nueva categoria"/><ErrorValidacion id="errornuevaCategoria">ingresar nueva categoria</ErrorValidacion>
 <ImputsReferidos id="video" onChange={handleChange} type="file" style={{border:"none",borderRadius:"0px"}}/>
 <ErrorValidacion id="errorvideo" >ingresar archivo de video</ErrorValidacion>
-<ButonStyle>subir</ButonStyle>
+<ButonStyle style={{margin:"15px"}}>subir</ButonStyle>
 </Formulario>
 
 

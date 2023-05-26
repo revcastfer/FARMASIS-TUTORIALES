@@ -12,7 +12,18 @@ let allTutorials = await Tutorial.findAll({ include: Category });
 
 
 let data=allCategorias.map(cate=>{let descrip=cate.descrip; 
-	return{[descrip]:allTutorials.filter(tuto=>tuto.CategoryId==cate.id).sort( (a,b)=>a.name[0]-b.name[0] ) }});
+	return{[descrip]:allTutorials.filter(tuto=>tuto.CategoryId==cate.id)
+.sort( (a,b)=>{
+
+	if(a.name[0]==b.name[0]){
+
+		if(a.name[2]==1){return 1}else return -1
+	}
+	else return a.name[0]-b.name[0]
+
+
+
+	 }) }});
 
 
 

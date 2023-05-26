@@ -9,15 +9,17 @@ import Media from 'react-media';
 import baner from './imgs/baner.JPG'
 
 
-const logoStyle={width: "200px",
-height: "100px" ,
+const logoStyle={
+width: "100px",
+width:"20vh",
 position:"relative",
 left: "40px",
 top:"10px"
 };
 
 const banerLogoStyle={position: "absolute",left:'-20px',
-height: "128px"};
+height:"100%",
+width:"20%",minWidth:"32vh"};
 
 
 
@@ -86,11 +88,13 @@ const DivOpcionsNav=styled.div`
 position: relative;
 display: flex;
 justify-content: space-around;
-width:80%;
-left:300px;
+width:75%;
+left:20%;
 @media (max-width:900px){
-justify-content:space-evenly;
-left:220px;
+justify-content:space-between;
+width:60%;
+left:227px;
+
 
 }
 `
@@ -104,7 +108,7 @@ const otionsLinksNavbar=({isActive})=>{
 	color: isActive ? 'orange':'#033953',
 	fontWeight: isActive? "bold" : 'normal',
 	textDecoration: isActive? "none" : 'underline',
-	fontSize:'24px',
+	fontSize:'23px',
 }
 }
 

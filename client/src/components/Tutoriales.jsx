@@ -5,6 +5,8 @@ import {useSelector} from 'react-redux';
 import fondoHex from './imgs/fondoHexagonos.jpg'
 import axios from 'axios'
 
+
+
 const Titulovideos=styled.h1`
 font-size: 50px;color: #f5b041;
 left:0px
@@ -37,16 +39,29 @@ width:85%;
 }
 `
 
-let data;
-axios("http://localhost:3002/farmasistutorials")
-.then(datos=>datos.data)
-.then(datos=>data=datos)
+
 
 
 
 
 
 export default function Tutoriales(){
+let [data,setData]=React.useState([]);
+
+
+
+React.useEffect(()=>{         
+
+
+axios("http://localhost:3002/farmasistutorials")
+.then(datos=>datos.data)
+.then(datos=>setData(datos))
+
+
+
+},[]  )
+
+
 	let titulo=useSelector((state)=>state.titulo);
 let descripcion=useSelector((state)=>state.descripcion);
 let url=useSelector((state)=>state.url);
