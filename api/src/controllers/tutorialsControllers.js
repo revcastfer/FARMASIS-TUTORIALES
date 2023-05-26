@@ -28,15 +28,18 @@ let data=allCategorias.map(cate=>{let descrip=cate.descrip;
 
 
 return data
-
+ 
 }
 
 
 let controllerPost=async(name,descrip,video,categori)=>{
+	console.log("ok");
 
-try{	const basico = await Tutorial.create({name: name,descrip:descrip,video:video,categori:categori} ) 
- 	}
-catch(error){throw new Error (error)}
+return "ok"
+
+//try{	const basico = await Tutorial.create({name: name,descrip:descrip,video:video,categori:categori} ) 
+// 	}
+//catch(error){throw new Error (error)}
 
 }
 

@@ -55,7 +55,7 @@ cargaData=()=>{
  
  
 
-  const adminDeUsuarios=Tutorial.create({name:"1.-Administracion de Ususarios" , descrip:"en este video comprenderemos como crear distintos usuarios y aplicar las politicas necesarias dependiendo de su funcion en la empresa" ,
+  const adminDeUsuarios=Tutorial.create({name:"1.-Administracion de Usuarios" , descrip:"en este video comprenderemos como crear distintos usuarios y aplicar las politicas necesarias dependiendo de su funcion en la empresa" ,
                                    video:"/videos/Administracion De Usuarios.m4v", CategoryId:1 });
   const precios=Tutorial.create({name:"2.-Precios" , descrip:"colocaremos los distints precios cada producto" ,
                                    video:"/videos/Precios Tutorial.m4v", CategoryId:1 });
@@ -75,7 +75,7 @@ cargaData=()=>{
                                    video:"/videos/Guias Electronicas.m4v", CategoryId:1 });
   const compras=Tutorial.create({name:"8.-ingreso de compras por factura" , descrip:"ingresar su factura de compras al sistema" ,
                                    video:"/videos/compras.m4v", CategoryId:1 });
-  const vencimiento=Tutorial.create({name:"8.1.-definicion de fecahas de vencimiento" , descrip:"entender el manejo de las fechas por parde de nuestro sistema" ,
+  const vencimiento=Tutorial.create({name:"8.1.-definicion de fechas de vencimiento" , descrip:"entender el manejo de las fechas por parde de nuestro sistema" ,
                                    video:"/videos/DEf. Fechas De Vencimiento.m4v", CategoryId:1 });
   const digemid=Tutorial.create({name:"9.-envio de precios a la digemid" , descrip:"como realizar el envio de precios a la digemid mediante archivo excel" ,
                                    video:"/videos/Digemid Tutorial.m4v", CategoryId:1 });

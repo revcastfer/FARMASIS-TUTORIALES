@@ -15,6 +15,10 @@ axios("http://localhost:3002/categorias")
 },[]  );
 
 
+let selectOnChange=(e)=>{
+	let nuevaCategoria=document.getElementById("nuevaCategoria"); 
+	e.target.value==0?nuevaCategoria.style.visibility = "visible": nuevaCategoria.style.visibility = "hidden"}
+
 let handleChange=(e)=>{
 
 let etiqueta=e.target;
@@ -38,13 +42,13 @@ let sendVideo=(e)=>{e.preventDefault()}
 
 <textarea style={{margin:"15px",borderRadius:"5px"}} id="descripcion" onChange={handleChange} rows="5" cols="32"placeholder="escribir la descripcion del video"></textarea>
 <ErrorValidacion  id="errordescripcion">ingresar descripcion</ErrorValidacion>
-<select  style={{margin:"15px"}} id="categoria">
-<option value={0} disabled selected>selecionar categoria</option>
+<select  style={{margin:"15px"}} id="categoria"   onChange={selectOnChange}>
+<option value="" disabled selected>selecionar categoria</option>
 {categorias.map( ele=><option value={ele.id}>{ele.descrip}</option> )}
-<option value={0}>nueva categoria</option>
+<option  value={0}>nueva categoria</option>
 </select>
 <ErrorValidacion  id="errorcategoria">selecionar categoria</ErrorValidacion>
-<ImputsReferidos  id="nuevaCategoria" onChange={handleChange} placeholder="ingrese nueva categoria"/><ErrorValidacion id="errornuevaCategoria">ingresar nueva categoria</ErrorValidacion>
+<ImputsReferidos  id="nuevaCategoria" onChange={handleChange} style={{visibility:"hidden"}} placeholder="ingrese nueva categoria"/><ErrorValidacion id="errornuevaCategoria">ingresar nueva categoria</ErrorValidacion>
 <ImputsReferidos id="video" onChange={handleChange} type="file" style={{border:"none",borderRadius:"0px"}}/>
 <ErrorValidacion id="errorvideo" >ingresar archivo de video</ErrorValidacion>
 <ButonStyle style={{margin:"15px"}}>subir</ButonStyle>

@@ -12,13 +12,14 @@ catch (error){ res.status(501).send(error)}
 
 };
 
-let postTutorials=(req,res)=>{
+let postTutorials=async(req,res)=>{
   
 const {name,descrip,video,categori}=req.body;
 
 try{
-	controllerPost(name,descrip,video,categori);
-res.status(200).json(req.body)
+	let rpta=await controllerPost(name,descrip,video,categori);
+
+res.status(200).json({msg:rpta})
 }
 catch(error){ res.status(501).json({msg:error})}
 
