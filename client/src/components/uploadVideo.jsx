@@ -22,17 +22,43 @@ let selectOnChange=(e)=>{
 let handleChange=(e)=>{
 
 let etiqueta=e.target;
-console.log(etiqueta.value);
 if (etiqueta.value=="") {document.getElementById("error"+ etiqueta.id).style.visibility="visible"}
 
 };
 
 
-let sendVideo=(e)=>{e.preventDefault()}
+let sendVideo=(e)=>{e.preventDefault();
+
+let nombre=document.getElementById("nombre").value;
+let descripcion=document.getElementById("descripcion").value;
+let categoria=document.getElementById("categoria").value;
+let video=document.getElementById("video").files[0].name;
+
+
+
+const form = new FormData();
+form.append("nombre",nombre);
+form.append("descripcion",descripcion);
+form.append("categoria",categoria);
+form.append("video",video);
+
+
+const datosCompletos=Object.fromEntries(form.entries());
+console.log(datosCompletos);
+
+//axios.post("http://localhost:3002/farmasistutorials",{
+//        method: 'POST',
+//        body: form,
+//        headers: {
+//          "Content-Type": "multipart/form-data"}
+//        })
+
+
+}
 
 
 	return(
-<Formulario style={{width:"500px"}}  onSubmit={sendVideo} >
+<Formulario enctype='multipart/form-data' style={{width:"500px"}}  onSubmit={sendVideo} >
 
 <ImputsReferidos style={{Width:"100%"}} onChange={handleChange} id="nombre" placeholder="ingrese nombre del video"/><ErrorValidacion id="errornombre">revisar nombre</ErrorValidacion>
 

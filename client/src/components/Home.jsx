@@ -10,7 +10,7 @@ import baner from './imgs/baner.JPG'
 
 
 const logoStyle={
-width: "100px",
+
 width:"20vh",
 position:"relative",
 left: "40px",

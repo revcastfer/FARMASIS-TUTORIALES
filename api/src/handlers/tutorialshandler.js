@@ -14,14 +14,18 @@ catch (error){ res.status(501).send(error)}
 
 let postTutorials=async(req,res)=>{
   
-const {name,descrip,video,categori}=req.body;
+const {nombre,descripcion,categoria}=req.body;
 
-try{
-	let rpta=await controllerPost(name,descrip,video,categori);
+console.log(nombre,descripcion,categoria);
 
-res.status(200).json({msg:rpta})
-}
-catch(error){ res.status(501).json({msg:error})}
+res.status(200).send(nombre,descripcion,categoria)
+
+//try{
+//	let rpta=await controllerPost(name,descrip,video,categori);
+
+//res.status(200).json({msg:rpta})
+//}
+//catch(error){ res.status(501).json({msg:error})}
 
 };
 

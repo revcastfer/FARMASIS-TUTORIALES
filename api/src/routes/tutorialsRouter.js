@@ -17,7 +17,7 @@ tutorialsRouter=Router();
 
 tutorialsRouter.get("/",tutorialsHandler);
 
-tutorialsRouter.post("/",upload.single('TUTORIAL'),postTutorials);
+tutorialsRouter.post("/",upload.single('video'),postTutorials);
 tutorialsRouter.get("/:name",getVideo);
 
 
