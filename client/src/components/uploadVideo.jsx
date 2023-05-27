@@ -32,7 +32,7 @@ let sendVideo=(e)=>{e.preventDefault();
 let nombre=document.getElementById("nombre").value;
 let descripcion=document.getElementById("descripcion").value;
 let categoria=document.getElementById("categoria").value;
-let video=document.getElementById("video").files[0].name;
+let video=document.getElementById("video").files[0];
 
 
 
@@ -43,15 +43,15 @@ form.append("categoria",categoria);
 form.append("video",video);
 
 
+
 const datosCompletos=Object.fromEntries(form.entries());
 console.log(datosCompletos);
 
-//axios.post("http://localhost:3002/farmasistutorials",{
-//        method: 'POST',
-//        body: form,
-//        headers: {
-//          "Content-Type": "multipart/form-data"}
-//        })
+axios.post("http://localhost:3002/farmasistutorials",datosCompletos, {
+  headers: {
+    "Content-Type": "multipart/form-data"}
+  })
+ .catch((err) => ("Error occured", err));
 
 
 }
@@ -70,7 +70,7 @@ console.log(datosCompletos);
 <ErrorValidacion  id="errordescripcion">ingresar descripcion</ErrorValidacion>
 <select  style={{margin:"15px"}} id="categoria"   onChange={selectOnChange}>
 <option value="" disabled selected>selecionar categoria</option>
-{categorias.map( ele=><option value={ele.id}>{ele.descrip}</option> )}
+{categorias.map( ele=><option key={ele.id} value={ele.id}>{ele.descrip}</option> )}
 <option  value={0}>nueva categoria</option>
 </select>
 <ErrorValidacion  id="errorcategoria">selecionar categoria</ErrorValidacion>

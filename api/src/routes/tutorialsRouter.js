@@ -5,6 +5,7 @@ const storage=multer.diskStorage({
 destination:"./src/videos",
 filename: (req,file,cb)=>{cb(null,file.originalname)}
 });
+
 const upload = multer({ storage:storage,dest: './src/videos' })
 
 
