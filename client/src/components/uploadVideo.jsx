@@ -5,7 +5,7 @@ import {ImputsReferidos,Formulario,ButonStyle,ErrorValidacion} from "./referidos
 
 export default function Upload(){
 const [categorias,setCategorias]=useState([]);
-const [validacion,setValidacion]=useState([]);
+const [validacion,setValidacion]=useState([nombre:false,descripcion:false,categoria:false,video:false,nuevaCategoria:false]);
 
 useEffect(()=>{
 axios("http://localhost:3002/categorias")
@@ -22,9 +22,11 @@ let selectOnChange=(e)=>{
 let handleChange=(e)=>{
 
 let etiqueta=e.target;
-if (etiqueta.value=="") {document.getElementById("error"+ etiqueta.id).style.visibility="visible"}
+if (etiqueta.value=="") {document.getElementById("error"+ etiqueta.id).style.visibility="visible";
+setValidacion({...validacion,[etiqueta.id]:false})}
 
 };
+
 
 
 let sendVideo=(e)=>{e.preventDefault();
@@ -33,27 +35,24 @@ let nombre=document.getElementById("nombre").value;
 let descripcion=document.getElementById("descripcion").value;
 let categoria=document.getElementById("categoria").value;
 let video=document.getElementById("video").files[0];
-
+let nuevaCategoria=document.getElementById("nuevaCategoria").value;
 
 
 const form = new FormData();
 form.append("nombre",nombre);
 form.append("descripcion",descripcion);
-form.append("categoria",categoria);
+categoria==0?form.append("categoria",nuevaCategoria):form.append("categoria",categoria);
 form.append("video",video);
 
 
 
 const datosCompletos=Object.fromEntries(form.entries());
-console.log(datosCompletos);
 
 axios.post("http://localhost:3002/farmasistutorials",datosCompletos, {
   headers: {
     "Content-Type": "multipart/form-data"}
   })
  .catch((err) => ("Error occured", err));
-
-
 }
 
 

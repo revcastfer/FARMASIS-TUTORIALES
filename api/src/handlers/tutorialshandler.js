@@ -15,17 +15,15 @@ catch (error){ res.status(501).send(error)}
 let postTutorials=async(req,res)=>{
   
 const {nombre,descripcion,categoria}=req.body;
+const video = req.file.filename;
 
-console.log(nombre,descripcion,categoria);
 
-res.status(200).send(nombre,descripcion,categoria)
+try{
+	let rpta=await controllerPost(nombre,descripcion,categoria,video);
 
-//try{
-//	let rpta=await controllerPost(name,descrip,video,categori);
-
-//res.status(200).json({msg:rpta})
-//}
-//catch(error){ res.status(501).json({msg:error})}
+res.status(200).json(rpta)
+}
+catch(error){ res.status(501).json({msg:error})}
 
 };
 
@@ -35,7 +33,7 @@ let getVideo=(req,res)=>{
 const {name}=req.params;
 
 
-//res.status(200).send("llegamos")
+
 res.sendfile(path.join(__dirname,`../videos/${name}`) )
 }
 

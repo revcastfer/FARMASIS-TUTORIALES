@@ -32,15 +32,32 @@ return data
 }
 
 
-let controllerPost=async(name,descrip,video,categori)=>{
-	console.log("ok");
+let controllerPost=async(nombre,descripcion,categoria,video)=>{
 
-return "ok"
 
-//try{	const basico = await Tutorial.create({name: name,descrip:descrip,video:video,categori:categori} ) 
-// 	}
-//catch(error){throw new Error (error)}
 
+
+let allCategorias=await Category.findAll();
+
+
+if (typeof Category == Number){ 
+
+try{
+const tutorial = await Tutorial.create({name:nombre,descrip:descripcion,video:"/videos/"+video,CategoryId:categoria});
+return tutorial}
+catch(error){throw new Error (error)}
+}
+
+else {
+try{
+	
+let categoriaNueva = await Category.create({descrip:categoria});
+let idCategoria=categoriaNueva.dataValues.id;
+const tutorial = await Tutorial.create({name:nombre,descrip:descripcion,video:"/videos/"+video,CategoryId:idCategoria});
+return tutorial
+}
+catch(error){throw new Error (error)}
+}
 }
 
 
