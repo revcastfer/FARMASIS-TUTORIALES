@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import {useState,useEffect} from "react"
 import axios from "axios"
 import {ImputsReferidos,Formulario,ButonStyle,ErrorValidacion} from "./referidos.jsx"
@@ -40,7 +39,7 @@ let readyForSend=()=>{
 	switch(validacion.categoria){
 case true:
 	if(validacion.nombre&&validacion.descripcion&&validacion.video)	{return true} else {return false};
-	break
+	break;
 case false:
 	if(validacion.nombre&&validacion.descripcion&&validacion.nuevaCategoria){return true} else {return false};
 	break;
@@ -72,7 +71,7 @@ axios.post("http://localhost:3002/farmasistutorials",datosCompletos, {
   headers: {
     "Content-Type": "multipart/form-data"}
   })
- .catch((err) => ("Error occured", err));
+ .catch((err) => ("Error occured: " + err));
 alert("tutorial correctamente subido")}
 
 

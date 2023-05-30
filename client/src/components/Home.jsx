@@ -11,7 +11,7 @@ import baner from './imgs/baner.JPG'
 
 const logoStyle={
 
-width:"20vh",
+width:"18vh",
 position:"relative",
 left: "40px",
 top:"10px"
@@ -19,7 +19,7 @@ top:"10px"
 
 const banerLogoStyle={position: "absolute",left:'-20px',
 height:"100%",
-width:"20%",minWidth:"32vh"};
+width:"18%",minWidth:"30vh"};
 
 
 
@@ -92,10 +92,8 @@ width:75%;
 left:20%;
 @media (max-width:900px){
 justify-content:space-between;
-width:60%;
-left:227px;
-
-
+width:63%;
+left:217px;
 }
 `
 
