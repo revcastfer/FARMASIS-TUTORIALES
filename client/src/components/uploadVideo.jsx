@@ -5,7 +5,7 @@ import {ImputsReferidos,Formulario,ButonStyle,ErrorValidacion} from "./referidos
 
 export default function Upload(){
 const [categorias,setCategorias]=useState([]);
-const [validacion,setValidacion]=useState([nombre:false,descripcion:false,categoria:false,video:false,nuevaCategoria:false]);
+const [validacion,setValidacion]=useState({nombre:false,descripcion:false,categoria:false,video:false,nuevaCategoria:false});
 
 useEffect(()=>{
 axios("http://localhost:3002/categorias")
@@ -17,19 +17,39 @@ axios("http://localhost:3002/categorias")
 
 let selectOnChange=(e)=>{
 	let nuevaCategoria=document.getElementById("nuevaCategoria"); 
-	e.target.value==0?nuevaCategoria.style.visibility = "visible": nuevaCategoria.style.visibility = "hidden"}
+	if(e.target.value==0){nuevaCategoria.style.visibility = "visible";
+setValidacion({...validacion,categoria:false})
+}else {
+	nuevaCategoria.style.visibility = "hidden";
+setValidacion({...validacion,categoria:true})
+} 
+
+}
 
 let handleChange=(e)=>{
 
 let etiqueta=e.target;
 if (etiqueta.value=="") {document.getElementById("error"+ etiqueta.id).style.visibility="visible";
 setValidacion({...validacion,[etiqueta.id]:false})}
+else{  document.getElementById("error"+ etiqueta.id).style.visibility="hidden";
+setValidacion({...validacion,[etiqueta.id]:true}) }
 
 };
 
-
+let readyForSend=()=>{
+	switch(validacion.categoria){
+case true:
+	if(validacion.nombre&&validacion.descripcion&&validacion.video)	{return true} else {return false};
+	break
+case false:
+	if(validacion.nombre&&validacion.descripcion&&validacion.nuevaCategoria){return true} else {return false};
+	break;
+default: return false
+	}
+};
 
 let sendVideo=(e)=>{e.preventDefault();
+if (readyForSend()){
 
 let nombre=document.getElementById("nombre").value;
 let descripcion=document.getElementById("descripcion").value;
@@ -53,6 +73,13 @@ axios.post("http://localhost:3002/farmasistutorials",datosCompletos, {
     "Content-Type": "multipart/form-data"}
   })
  .catch((err) => ("Error occured", err));
+alert("tutorial correctamente subido")}
+
+
+else{alert("verificar que todos los campos esten llenos")}
+
+
+
 }
 
 
