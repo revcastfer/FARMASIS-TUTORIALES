@@ -8,7 +8,7 @@ import axios from 'axios'
 
 
 const Titulovideos=styled.h1`
-font-size: 50px;color: #f5b041;
+font-size: 44px;color: #f5b041;
 left:0px
 `;
 
@@ -71,7 +71,7 @@ return	(
 	<Categoria data={data} />
 	<Reproductor>
 		<Titulovideos>{titulo}</Titulovideos>
-		<video style={ {width:"50vw"}} controls="controls" src={url}/>
+		<video style={ {width:"50vw",height:"50vh"}} controls="controls" src={url}/>
 		<Descripcionvideos>{descripcion}</Descripcionvideos>
 
 	</Reproductor>

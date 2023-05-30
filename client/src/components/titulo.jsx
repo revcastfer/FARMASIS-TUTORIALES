@@ -8,7 +8,7 @@ import Media from 'react-media';
 const VideoDiv=styled.div`
 display:block;
 width: 100%;
-height:350px;
+
 @media (min-width:900px){
 	display:none;
 }
@@ -28,6 +28,7 @@ cursor: pointer;
  `
 //menu a menos de 900px
 const MenuStyle2=styled.li`
+
 display:flex;
 font-size:40px;
 margin:20px;
@@ -69,12 +70,12 @@ for (let i = 0; i < collection.length; i++) {
 
 
 	return(
-		<div>
-		{  nameObjs.map(  name=><div>
+		<div >
+		{  nameObjs.map(  name=><div key={name}>
 
 			<MenuStyle id={name} className="null" onClick={()=>handleClick(name)} > {name} </MenuStyle>
 			<MenuStyle2 id={name} className="null" > {name} </MenuStyle2>
-			<VideoDiv> <video style={ {height:"48vh"}} controls="controls" src={"http://localhost:3002"+search(name).video}/></VideoDiv> 
+			<VideoDiv> <video style={ {height:"48vh",width:"70vw"}} controls="controls" src={"http://localhost:3002"+search(name).video}/></VideoDiv> 
 
 			</div>  )  }
 	   </div>)
