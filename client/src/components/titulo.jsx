@@ -75,7 +75,7 @@ for (let i = 0; i < collection.length; i++) {
 
 			<MenuStyle id={name} className="null" onClick={()=>handleClick(name)} > {name} </MenuStyle>
 			<MenuStyle2 id={name} className="null" > {name} </MenuStyle2>
-			<VideoDiv> <video style={ {height:"48vh",width:"70vw"}} controls="controls" src={"http://localhost:3002"+search(name).video}/></VideoDiv> 
+			<VideoDiv> <video style={ {height:"48vh",width:"85vw"}} controls="controls" src={"http://localhost:3002"+search(name).video}/></VideoDiv> 
 
 			</div>  )  }
 	   </div>)

@@ -94,6 +94,8 @@ let numeroReferido=document.getElementById("numeroReferido");
 
 let validate=(e)=>{
 let validarNoNumeros=new RegExp('[0-9]');
+let validarLetras=new RegExp('[a-zA-Z]');
+
 let nombreVal=document.getElementById("nombreVal");
 let apellidoVal=document.getElementById("apellidoVal");
 let numeroVal=document.getElementById("numeroVal");
@@ -108,38 +110,38 @@ let id=e.target.id;
 
 switch(id){
 case "nombre":
-if(validarNoNumeros.test(valor)){nombreVal.style.visibility="visible"}else{nombreVal.style.visibility="hidden"};
+if(validarNoNumeros.test(valor)||nombre.value==""||nombre.value==" "){nombreVal.style.visibility="visible";readyForSend[1]=0}else{nombreVal.style.visibility="hidden";readyForSend[1]=1};
 break;
 case "apellido":
-if(validarNoNumeros.test(valor)){apellidoVal.style.visibility="visible"}else{apellidoVal.style.visibility="hidden"};
+if(validarNoNumeros.test(valor)||apellido.value==""||apellido.value==" "){apellidoVal.style.visibility="visible";readyForSend[2]=0}else{apellidoVal.style.visibility="hidden";readyForSend[2]=1};
 break;
 case "relacion":
-if(validarNoNumeros.test(valor)){relacionVal.style.visibility="visible"}else{relacionVal.style.visibility="hidden"};
+if(validarNoNumeros.test(valor)||relacion.value==""||relacion.value==" "){relacionVal.style.visibility="visible";readyForSend[3]=0}else{relacionVal.style.visibility="hidden";readyForSend[3]=1};
 break;
 case "nombreReferido":
-if(validarNoNumeros.test(valor)){nombreReferidoVal.style.visibility="visible"}else{nombreReferidoVal.style.visibility="hidden"};
+if(validarNoNumeros.test(valor)||nombreReferido.value==""||nombreReferido.value==" "){nombreReferidoVal.style.visibility="visible";readyForSend[4]=0}else{nombreReferidoVal.style.visibility="hidden";readyForSend[4]=1};
 break;
 case "apellidoReferido":
-if(validarNoNumeros.test(valor)){apellidoReferidoVal.style.visibility="visible"}else{apellidoReferidoVal.style.visibility="hidden"};
+if(validarNoNumeros.test(valor)||apellidoReferido.value==""||apellidoReferido.value==" "){apellidoReferidoVal.style.visibility="visible";readyForSend[5]=0}else{apellidoReferidoVal.style.visibility="hidden";readyForSend[5]=1};
 break;
 case "numero":
-if(validarNoNumeros.test(valor)){numeroVal.style.visibility="hidden"}else{numeroVal.style.visibility="visible"};
+if(validarLetras.test(valor)||numero.value==""||numero.value==" "){numeroVal.style.visibility="visible";readyForSend[6]=0}else{numeroVal.style.visibility="hidden";readyForSend[6]=1};
 break;
 case "numeroReferido":
-if(validarNoNumeros.test(valor)){numeroReferidoVal.style.visibility="hidden"}else{numeroReferidoVal.style.visibility="visible"};
+if(validarLetras.test(valor)||numeroReferido.value==""||numeroReferido.value==" "){numeroReferidoVal.style.visibility="visible";readyForSend[7]=0}else{numeroReferidoVal.style.visibility="hidden";readyForSend[7]=1};
 break;
-
-
-
 }
 
 }
 
 
-
+let limpiar=(array)=>{array.forEach(name=>document.getElementById(name).value="")};
 
 let handleSubmit=(e)=>{
 e.preventDefault();
+
+if(ValidateReadyForSend()){
+
 axios.post("http://localhost:3002/referidos",{nombre:nombre.value,
 	                                         apellido:apellido.value,
 	                                         numero:numero.value,
@@ -155,14 +157,15 @@ axios.post("http://localhost:3002/referidos",{nombre:nombre.value,
   });
 
   alert("DATOS ENVIADOS");
+limpiar(["nombre","apellido","numero","relacion","nombreReferido","apellidoReferido","numeroReferido"])
 
-nombre.value="";
-apellido.value="";
-numero.value="";
-relacion.value="";
-nombreReferido.value="";
-apellidoReferido.value="";
-numeroReferido.value="";
+
+
+}else{ alert("VERIFICAR DATOS");}
+
+
+
+
 }
 
 	
@@ -174,14 +177,14 @@ return(
 		<Formulario  onSubmit={handleSubmit}>
 		<div style={formCentrar}>
 		<TipoDatos>tus datos:</TipoDatos>
-	    <ImputsReferidos id="nombre" onChange={validate} placeholder="Tus nombres: " type="text"/><ErrorValidacion id="nombreVal">sin numeros</ErrorValidacion>
-		<ImputsReferidos id="apellido" onChange={validate} placeholder="Tus apellidos:" type="text"/><ErrorValidacion id="apellidoVal">verificar apellido</ErrorValidacion>
-		<ImputsReferidos id="numero" onChange={validate} placeholder="Tu numero de contacto:" type="tel"/><ErrorValidacion id="numeroVal">solo numeros</ErrorValidacion>
-		<ImputsReferidos id="relacion" onChange={validate} placeholder="Tu relacion con el referido:" type="text"/><ErrorValidacion id="relacionVal">verificar relacion</ErrorValidacion>
+	    <ImputsReferidos id="nombre" onChange={validate} placeholder="Tus nombres: " type="text"/><ErrorValidacion id="nombreVal">no vacio,sin numeros</ErrorValidacion>
+		<ImputsReferidos id="apellido" onChange={validate} placeholder="Tus apellidos:" type="text"/><ErrorValidacion id="apellidoVal">no vacio,verificar apellido</ErrorValidacion>
+		<ImputsReferidos id="numero" onChange={validate} placeholder="Tu numero de contacto:" type="tel"/><ErrorValidacion id="numeroVal">no vacio,solo numeros</ErrorValidacion>
+		<ImputsReferidos id="relacion" onChange={validate} placeholder="Tu relacion con el referido:" type="text"/><ErrorValidacion id="relacionVal">no vacio,verificar relacion</ErrorValidacion>
 		<TipoDatos>datos del referido:</TipoDatos>
-		<ImputsReferidos id="nombreReferido" onChange={validate} placeholder="Nombre del referido:" type="text"/><ErrorValidacion id="nombreReferidoVal">verificar nombre</ErrorValidacion>
-		<ImputsReferidos id="apellidoReferido" onChange={validate} placeholder="Apellido del referido" type="text"/><ErrorValidacion id="apellidoReferidoVal">verificar apellido</ErrorValidacion>
-		<ImputsReferidos id="numeroReferido" onChange={validate} placeholder="Numero de contacto del referido" type="phone"/><ErrorValidacion id="numeroReferidoVal">solo numeros</ErrorValidacion>
+		<ImputsReferidos id="nombreReferido" onChange={validate} placeholder="Nombre del referido:" type="text"/><ErrorValidacion id="nombreReferidoVal">no vacio,verificar nombre</ErrorValidacion>
+		<ImputsReferidos id="apellidoReferido" onChange={validate} placeholder="Apellido del referido" type="text"/><ErrorValidacion id="apellidoReferidoVal">no vacio,verificar apellido</ErrorValidacion>
+		<ImputsReferidos id="numeroReferido" onChange={validate} placeholder="Numero de contacto del referido" type="phone"/><ErrorValidacion id="numeroReferidoVal">no vacio,solo numeros</ErrorValidacion>
 		<ButonStyle >enviar</ButonStyle>
 		</div>
 

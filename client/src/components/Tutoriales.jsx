@@ -33,7 +33,7 @@ display:flex;
 background-image:url(${fondoHex});
 background-size:cover;
 justify-content:space-between;
-width:85%;
+width:100%;
 @media (max-width:900px){
 	background-size:contain;
 }
@@ -71,7 +71,7 @@ return	(
 	<Categoria data={data} />
 	<Reproductor>
 		<Titulovideos>{titulo}</Titulovideos>
-		<video style={ {width:"50vw",height:"50vh"}} controls="controls" src={url}/>
+		<div style={ {width:"61vw",height:"50vh"}}><video style={ {width:"50vw",height:"50vh",position:"relative",left:"8%"}}controls="controls" src={url}/></div>
 		<Descripcionvideos>{descripcion}</Descripcionvideos>
 
 	</Reproductor>

@@ -1,10 +1,13 @@
 import {useState,useEffect} from "react"
 import axios from "axios"
+import {useSelector} from 'react-redux';
 import {ImputsReferidos,Formulario,ButonStyle,ErrorValidacion} from "./referidos.jsx"
 
 export default function Upload(){
 const [categorias,setCategorias]=useState([]);
 const [validacion,setValidacion]=useState({nombre:false,descripcion:false,categoria:false,video:false,nuevaCategoria:false});
+
+
 
 useEffect(()=>{
 axios("http://localhost:3002/categorias")

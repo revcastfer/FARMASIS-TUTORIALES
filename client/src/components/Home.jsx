@@ -13,7 +13,7 @@ const logoStyle={
 
 width:"18vh",
 position:"relative",
-left: "40px",
+left: "43px",
 top:"10px"
 };
 
@@ -134,7 +134,7 @@ if(isLogin==="false"){
         <DivOpcionsNav>
 		<NavLink  to="/Home/Referidos" style={otionsLinksNavbar} >Referidos </NavLink>
 		<NavLink  to="/Home/Tutoriales" style={otionsLinksNavbar} >Video-tutoriales</NavLink>
-		<NavLink  to="/Home/Upload" style={otionsLinksNavbar} >subir videos</NavLink>
+		{user=="cesarin"?<NavLink  to="/Home/Upload" style={otionsLinksNavbar} >subir videos</NavLink>:null}
        </DivOpcionsNav>
 
 

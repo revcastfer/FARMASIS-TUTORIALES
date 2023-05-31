@@ -20,8 +20,10 @@ let nameGroup="";
 for (let tit in props.lista){ nameGroup=tit };
 
 return(
- <ul>   <img src={icon} style={icoStyle}/><h3 style={grupoStylo}>{nameGroup}</h3>
+ <ul >   <img src={icon} style={icoStyle}/><h3 style={grupoStylo}>{nameGroup}</h3>
 <Titulo  objeto={props.lista[nameGroup]} />
- </ul> )
+ </ul> 
+
+)
 }
 
