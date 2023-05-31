@@ -1,6 +1,5 @@
 import {useState,useEffect} from "react"
 import axios from "axios"
-import {useSelector} from 'react-redux';
 import {ImputsReferidos,Formulario,ButonStyle,ErrorValidacion} from "./referidos.jsx"
 
 export default function Upload(){
@@ -19,7 +18,7 @@ axios("http://localhost:3002/categorias")
 
 let selectOnChange=(e)=>{
 	let nuevaCategoria=document.getElementById("nuevaCategoria"); 
-	if(e.target.value==0){nuevaCategoria.style.visibility = "visible";
+	if(e.target.value===0){nuevaCategoria.style.visibility = "visible";
 setValidacion({...validacion,categoria:false})
 }else {
 	nuevaCategoria.style.visibility = "hidden";
@@ -31,7 +30,7 @@ setValidacion({...validacion,categoria:true})
 let handleChange=(e)=>{
 
 let etiqueta=e.target;
-if (etiqueta.value=="") {document.getElementById("error"+ etiqueta.id).style.visibility="visible";
+if (etiqueta.value==="") {document.getElementById("error"+ etiqueta.id).style.visibility="visible";
 setValidacion({...validacion,[etiqueta.id]:false})}
 else{  document.getElementById("error"+ etiqueta.id).style.visibility="hidden";
 setValidacion({...validacion,[etiqueta.id]:true}) }
@@ -63,7 +62,7 @@ let nuevaCategoria=document.getElementById("nuevaCategoria").value;
 const form = new FormData();
 form.append("nombre",nombre);
 form.append("descripcion",descripcion);
-categoria==0?form.append("categoria",nuevaCategoria):form.append("categoria",categoria);
+categoria===0?form.append("categoria",nuevaCategoria):form.append("categoria",categoria);
 form.append("video",video);
 
 

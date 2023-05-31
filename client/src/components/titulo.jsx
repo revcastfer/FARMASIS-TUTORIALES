@@ -1,7 +1,6 @@
 import {useDispatch} from 'react-redux';
 import {selectVideo} from './redux/actions';
 import styled from "styled-components";
-import Media from 'react-media';
 
 
 //videos debajo titulo a menos de 900px
@@ -44,6 +43,7 @@ cursor: default;
 
 export default function Titulo(props){
 
+
 let dispatch=useDispatch();	
 let nameObjs=[];
 for (let obj in props.objeto){nameObjs.push(props.objeto[obj].name)};
@@ -66,6 +66,9 @@ for (let i = 0; i < collection.length; i++) {
  selected.color="orange";
  selected.fontWeight='bold' }
 
+let onPlayVideo=(e)=>{ 
+
+}
 
 
 
@@ -75,7 +78,7 @@ for (let i = 0; i < collection.length; i++) {
 
 			<MenuStyle id={name} className="null" onClick={()=>handleClick(name)} > {name} </MenuStyle>
 			<MenuStyle2 id={name} className="null" > {name} </MenuStyle2>
-			<VideoDiv> <video style={ {height:"48vh",width:"85vw"}} controls="controls" src={"http://localhost:3002"+search(name).video}/></VideoDiv> 
+			<VideoDiv> <video id={name} onPlay={onPlayVideo} style={ {height:"48vh",width:"85vw"}} controls="controls" src={"http://localhost:3002"+search(name).video}/></VideoDiv> 
 
 			</div>  )  }
 	   </div>)

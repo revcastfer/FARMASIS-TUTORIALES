@@ -110,26 +110,27 @@ let id=e.target.id;
 
 switch(id){
 case "nombre":
-if(validarNoNumeros.test(valor)||nombre.value==""||nombre.value==" "){nombreVal.style.visibility="visible";readyForSend[1]=0}else{nombreVal.style.visibility="hidden";readyForSend[1]=1};
+if(validarNoNumeros.test(valor)||nombre.value===""||nombre.value===" "){nombreVal.style.visibility="visible";readyForSend[1]=0}else{nombreVal.style.visibility="hidden";readyForSend[1]=1};
 break;
 case "apellido":
-if(validarNoNumeros.test(valor)||apellido.value==""||apellido.value==" "){apellidoVal.style.visibility="visible";readyForSend[2]=0}else{apellidoVal.style.visibility="hidden";readyForSend[2]=1};
+if(validarNoNumeros.test(valor)||apellido.value===""||apellido.value===" "){apellidoVal.style.visibility="visible";readyForSend[2]=0}else{apellidoVal.style.visibility="hidden";readyForSend[2]=1};
 break;
 case "relacion":
-if(validarNoNumeros.test(valor)||relacion.value==""||relacion.value==" "){relacionVal.style.visibility="visible";readyForSend[3]=0}else{relacionVal.style.visibility="hidden";readyForSend[3]=1};
+if(validarNoNumeros.test(valor)||relacion.value===""||relacion.value===" "){relacionVal.style.visibility="visible";readyForSend[3]=0}else{relacionVal.style.visibility="hidden";readyForSend[3]=1};
 break;
 case "nombreReferido":
-if(validarNoNumeros.test(valor)||nombreReferido.value==""||nombreReferido.value==" "){nombreReferidoVal.style.visibility="visible";readyForSend[4]=0}else{nombreReferidoVal.style.visibility="hidden";readyForSend[4]=1};
+if(validarNoNumeros.test(valor)||nombreReferido.value===""||nombreReferido.value===" "){nombreReferidoVal.style.visibility="visible";readyForSend[4]=0}else{nombreReferidoVal.style.visibility="hidden";readyForSend[4]=1};
 break;
 case "apellidoReferido":
-if(validarNoNumeros.test(valor)||apellidoReferido.value==""||apellidoReferido.value==" "){apellidoReferidoVal.style.visibility="visible";readyForSend[5]=0}else{apellidoReferidoVal.style.visibility="hidden";readyForSend[5]=1};
+if(validarNoNumeros.test(valor)||apellidoReferido.value===""||apellidoReferido.value===" "){apellidoReferidoVal.style.visibility="visible";readyForSend[5]=0}else{apellidoReferidoVal.style.visibility="hidden";readyForSend[5]=1};
 break;
 case "numero":
-if(validarLetras.test(valor)||numero.value==""||numero.value==" "){numeroVal.style.visibility="visible";readyForSend[6]=0}else{numeroVal.style.visibility="hidden";readyForSend[6]=1};
+if(validarLetras.test(valor)||numero.value===""||numero.value===" "){numeroVal.style.visibility="visible";readyForSend[6]=0}else{numeroVal.style.visibility="hidden";readyForSend[6]=1};
 break;
 case "numeroReferido":
-if(validarLetras.test(valor)||numeroReferido.value==""||numeroReferido.value==" "){numeroReferidoVal.style.visibility="visible";readyForSend[7]=0}else{numeroReferidoVal.style.visibility="hidden";readyForSend[7]=1};
+if(validarLetras.test(valor)||numeroReferido.value===""||numeroReferido.value===" "){numeroReferidoVal.style.visibility="visible";readyForSend[7]=0}else{numeroReferidoVal.style.visibility="hidden";readyForSend[7]=1};
 break;
+default: 
 }
 
 }

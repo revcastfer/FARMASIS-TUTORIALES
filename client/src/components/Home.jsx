@@ -4,8 +4,6 @@ import {logout} from './redux/actions.js';
 import {Navigate,Outlet,NavLink,useNavigate} from 'react-router-dom'
 import logo from './imgs/logosinfondo 3.png';
 import baner1 from './imgs/baner1.jpg'
-import Redirect from 'react-router-dom'
-import Media from 'react-media';
 import baner from './imgs/baner.JPG'
 
 
@@ -126,15 +124,15 @@ if(isLogin==="false"){
 		<div>
 		<Navbar>
 		
-		<img src={baner1} style={banerLogoStyle}/>
-		<img src={logo} style={logoStyle}/>
+		<img src={baner1} alt="banner" style={banerLogoStyle}/>
+		<img src={logo} alt="logocfc" style={logoStyle}/>
 		
 		
 
         <DivOpcionsNav>
 		<NavLink  to="/Home/Referidos" style={otionsLinksNavbar} >Referidos </NavLink>
 		<NavLink  to="/Home/Tutoriales" style={otionsLinksNavbar} >Video-tutoriales</NavLink>
-		{user=="cesarin"?<NavLink  to="/Home/Upload" style={otionsLinksNavbar} >subir videos</NavLink>:null}
+		{user==="cesarin"?<NavLink  to="/Home/Upload" style={otionsLinksNavbar} >subir videos</NavLink>:null}
        </DivOpcionsNav>
 
 
