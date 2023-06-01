@@ -104,7 +104,7 @@ const otionsLinksNavbar=({isActive})=>{
 	color: isActive ? 'orange':'#033953',
 	fontWeight: isActive? "bold" : 'normal',
 	textDecoration: isActive? "none" : 'underline',
-	fontSize:'23px',
+	fontSize:'30px',
 }
 }
 

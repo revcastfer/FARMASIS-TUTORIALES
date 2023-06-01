@@ -1,9 +1,10 @@
 import React from 'react';
 import Categoria from './categoria';
 import styled from "styled-components";
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
 import fondoHex from './imgs/fondoHexagonos.jpg'
 import axios from 'axios'
+import {selectVideo} from './redux/actions';
 
 
 
@@ -24,7 +25,7 @@ const Descripcionvideos=styled.div`
 font-size: 20px;
 color grey;
 position:absolute;
-right: 5%;
+text-align:right;
 padding:15px
 `
 
@@ -47,7 +48,7 @@ width:100%;
 
 export default function Tutoriales(){
 let [data,setData]=React.useState([]);
-
+let dispatch=useDispatch();
 
 
 React.useEffect(()=>{         
@@ -56,7 +57,7 @@ React.useEffect(()=>{
 axios("http://localhost:3002/farmasistutorials")
 .then(datos=>datos.data)
 .then(datos=>setData(datos))
-
+.then(datos=>dispatch(selectVideo(data[0].basico[0])))
 
 
 },[]  )

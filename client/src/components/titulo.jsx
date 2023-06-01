@@ -1,5 +1,6 @@
 import {useDispatch} from 'react-redux';
 import {selectVideo} from './redux/actions';
+import {useState} from "react";
 import styled from "styled-components";
 
 
@@ -44,6 +45,7 @@ cursor: default;
 export default function Titulo(props){
 
 
+let [videoSelected,setVideoSelected]=useState("")
 let dispatch=useDispatch();	
 let nameObjs=[];
 for (let obj in props.objeto){nameObjs.push(props.objeto[obj].name)};
@@ -67,6 +69,9 @@ for (let i = 0; i < collection.length; i++) {
  selected.fontWeight='bold' }
 
 let onPlayVideo=(e)=>{ 
+	if(videoSelected===""){ setVideoSelected(e.target.id)}
+	else{document.getElementById(videoSelected).pause();setVideoSelected( e.target.id)}
+
 
 }
 
@@ -78,7 +83,7 @@ let onPlayVideo=(e)=>{
 
 			<MenuStyle id={name} className="null" onClick={()=>handleClick(name)} > {name} </MenuStyle>
 			<MenuStyle2 id={name} className="null" > {name} </MenuStyle2>
-			<VideoDiv> <video id={name} onPlay={onPlayVideo} style={ {height:"48vh",width:"85vw"}} controls="controls" src={"http://localhost:3002"+search(name).video}/></VideoDiv> 
+			<VideoDiv> <video id={"Video"+name} onPlay={onPlayVideo} style={ {height:"48vh",width:"85vw"}} controls="controls" src={"http://localhost:3002"+search(name).video}/></VideoDiv> 
 
 			</div>  )  }
 	   </div>)

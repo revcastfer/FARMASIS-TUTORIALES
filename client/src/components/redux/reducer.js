@@ -2,8 +2,8 @@
 let localIsLogin=window.localStorage.getItem("isloguin");
 let localUser=window.localStorage.getItem("usuario");
 
-const initialState= {isloguin:localIsLogin,usuario:localUser,titulo:"bienvenido a farmasis",
-descripcion:"bienvenido a farmasis bienvenido a farmasis",url:""}; 
+const initialState= {isloguin:localIsLogin,usuario:localUser,titulo:"",
+descripcion:"",url:""}; 
 
 export default function reducer(state= initialState,action){
 	switch(action.type){
