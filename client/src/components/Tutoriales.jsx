@@ -73,7 +73,7 @@ return	(
 	<Categoria data={data} />
 	<Reproductor>
 		<Titulovideos>{titulo}</Titulovideos>
-		<div style={ {width:"61vw",height:"50vh"}}><video style={ {width:"50vw",height:"50vh",position:"relative",left:"8%"}}controls="controls" src={url}/></div>
+		<div style={ {width:"61vw",height:"50vh"}}><video style={ {width:"50vw",height:"50vh",position:"relative",left:"8%"}}controls="controls" src={url}/  ></div>
 		<Descripcionvideos>{descripcion}</Descripcionvideos>
 
 	</Reproductor>
