@@ -56,14 +56,15 @@ React.useEffect(()=>{
 
 axios("http://localhost:3002/farmasistutorials")
 .then(datos=>datos.data)
-.then(datos=>setData(datos))
-.then(datos=>dispatch(selectVideo(data[0].basico[0])))
-
-
+.then(datos=>setData(datos));
+  
 },[]  )
 
+let init=async()=>{await data;dispatch(selectVideo(data[0].basico[0]))};
+init()
 
-	let titulo=useSelector((state)=>state.titulo);
+
+let titulo=useSelector((state)=>state.titulo);
 let descripcion=useSelector((state)=>state.descripcion);
 let url=useSelector((state)=>state.url);
 
