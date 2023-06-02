@@ -22,7 +22,7 @@ const demo=[
 export default function ComboSearch(){
 
 
-return(<div>
+return(<div >
 	<Select  defaultValue={{label:"---seleccionar---", value:"null"}}
 	options ={demo} 
 	 />

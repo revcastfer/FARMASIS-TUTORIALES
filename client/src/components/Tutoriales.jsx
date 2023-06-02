@@ -2,6 +2,7 @@ import React from 'react';
 import Categoria from './categoria';
 import styled from "styled-components";
 import {useSelector,useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom'
 import fondoHex from './imgs/fondoHexagonos.jpg'
 import axios from 'axios'
 import {selectVideo} from './redux/actions';
@@ -48,12 +49,15 @@ width:100%;
 
 export default function Tutoriales(){
 let [data,setData]=React.useState([]);
+let isLogin=useSelector(state=>state.isloguin)
 let dispatch=useDispatch();
+const navigate=useNavigate()
 
 
-React.useEffect(()=>{         
 
-
+React.useEffect(()=>{        
+if(isLogin==="false"||isLogin===false) {navigate("/")};
+if(isLogin!=="true"){navigate("./")};
 axios("http://localhost:3002/farmasistutorials")
 .then(datos=>datos.data)
 .then(datos=>setData(datos));

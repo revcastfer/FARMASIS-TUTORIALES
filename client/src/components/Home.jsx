@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import {useDispatch,useSelector} from 'react-redux';
 import {logout} from './redux/actions.js';
-import {Navigate,Outlet,NavLink,useNavigate} from 'react-router-dom'
+import {Outlet,NavLink,useNavigate} from 'react-router-dom'
 import logo from './imgs/logosinfondo 3.png';
 import baner1 from './imgs/baner1.jpg'
 import baner from './imgs/baner.JPG'
+import React from 'react'
+
 
 
 const logoStyle={
@@ -99,13 +101,10 @@ left:217px;
 
 
 const otionsLinksNavbar=({isActive})=>{
-	return{
-		
-	color: isActive ? 'orange':'#033953',
+	return {color: isActive ? 'orange':'#033953',
 	fontWeight: isActive? "bold" : 'normal',
 	textDecoration: isActive? "none" : 'underline',
-	fontSize:'30px',
-}
+	fontSize:'30px'}
 }
 
 
@@ -113,13 +112,19 @@ const otionsLinksNavbar=({isActive})=>{
 export default function Home(){
  const navigate = useNavigate();
 let isLogin=useSelector(state=>state.isloguin);
+
 let dispatch=useDispatch();
 let user=useSelector(state=>state.usuario); 
 
-let handleLogout=()=>{dispatch(logout()); navigate("/") }
 
-if(isLogin==="false"){
-	return <Navigate to="/" /> }
+let handleLogout=()=>{dispatch(logout()); navigate("/") };
+
+React.useEffect(()=>{
+	if(isLogin==="false"||isLogin===false) {navigate("/")}else{ navigate("./Tutoriales") }
+},[])
+
+
+
 	return (
 		<div>
 		<Navbar>
@@ -138,7 +143,8 @@ if(isLogin==="false"){
 
        <div>
 		<UserInfo>
-		<UserName>Bienvenido: {user}</UserName><div style={inicialLetterStyle}>{user[0].toUpperCase()}</div>
+		{user?<UserName>Bienvenido: {user}</UserName>:null}
+		{user?<div style={inicialLetterStyle}>{user[0].toUpperCase()}</div>:null}
 		<Logout><span onClick={handleLogout} >Logout</span></Logout>
 		</UserInfo>
 		

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import styled from "styled-components";
-import {Navigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import logo from './imgs/logosinfondo.png';
 import fondo from './imgs/fondoLog.jpg';
 import ComboSearch from './ComboSearch'
@@ -11,11 +11,11 @@ import logoPie from './imgs/logoPie.png';
 
 const Pie=styled.div`
 background-color:grey;
-height: 65px;
+height: 60px;
 width: 100%;
 position:absolute;
 bottom:0px;
-opacity: 0.5;
+opacity: 0.4;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -42,23 +42,23 @@ const Ingreso=styled.div`
 background-color:#F6FDFB;
 border: 3px solid #09b5c1;
 width: 380px;
-Min-Height: 40%; 
+Min-Height: 30%; 
 border-radius:25px;
 font-size:30px;
 position:absolute;
 color: #033953;
-top:35%;
+top:32%;
 text-align:center;
-padding:15px;
+padding:10px;
 `
 const imgStyle={width: "auto",
-maxHeight: "18%" ,
+maxHeight: "11%" ,
 position:"absolute",
-top:"0px",left:"0px"
+top:"1%",left:"1%"
 };
 
 const imgPie={width: "auto",
-height: "50px" ,
+height: "45px" ,
 
 
 };
@@ -72,7 +72,7 @@ const buton={width: "80%", padding:"8px", borderRadius:"8px",border:"none", back
 
 
 export default function Login(){
-
+const navigate=useNavigate()
 let dispatch=useDispatch();
 let usuario="";
 let isLogin=useSelector(state=>state.isloguin);
@@ -80,10 +80,9 @@ let isLogin=useSelector(state=>state.isloguin);
 window.onload=function(){usuario=document.querySelector("#usuario").value};
 
 let handleChangeUserImput=(e)=>{ usuario= e.target.value  };
-let handleSubmit=(e)=>{;dispatch(loguin(usuario))};
+let handleSubmit=(e)=>{dispatch(loguin(usuario));navigate("./Home/Tutoriales")};
 
-if(isLogin==="true"){
-	return <Navigate to="./Home/Tutoriales" /> }
+
 
 return(
 <PanInicial> 
@@ -93,14 +92,14 @@ return(
 	<span><h4>acceso a usuarios</h4></span> 
 	
 	<form onSubmit={handleSubmit}>
-	<ComboSearch />
+	<ComboSearch style={inputs} />
 		<div>
 		<input style={inputs} placeholder="usuario" type="text" id="usuario" onChange={handleChangeUserImput} />
 	</div>
 	<div>
 		<input style={inputs} placeholder="Contraseña" type="password" id="contraseña"/>
 	</div> 
-	<button style={buton}>ingresar</button>
+	<button type="submit" style={buton}>ingresar</button>
 	</form>
 	</Ingreso>
 	<Pie><img src={logoPie} style={imgPie} alt="logo cfc"/> </Pie>
