@@ -143,7 +143,7 @@ e.preventDefault();
 
 if(ValidateReadyForSend()){
 
-axios.post("http://localhost:3002/referidos",{nombre:nombre.value,
+axios.post("/referidos",{nombre:nombre.value,
 	                                         apellido:apellido.value,
 	                                         numero:numero.value,
 	                                         relacion:relacion.value,

@@ -9,7 +9,7 @@ const [validacion,setValidacion]=useState({nombre:false,descripcion:false,catego
 
 
 useEffect(()=>{
-axios("http://localhost:3002/categorias")
+axios("/categorias")
 .then(datos=>datos.data)
 .then(datos=>setCategorias(datos));
 

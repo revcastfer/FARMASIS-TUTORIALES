@@ -22,7 +22,7 @@ let transporter = nodemailer.createTransport({
 const info = await transporter.sendMail({
     from: 'nuevosventasfarmasis@gmail.com', // sender address
     to: "soporte@farmasis.site, revcastfer@gmail.com ", // list of receivers,
-    subject: "Hello ✔", // Subject line
+    subject: "NUEVO REFERIDO ✔", // Subject line
     text: `TENEMOS UN NUEVO REFERIDO!!
            cliente :  ${nombre} ${apellido},
            con numero : ${numero} ,
