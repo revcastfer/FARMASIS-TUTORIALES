@@ -41,8 +41,8 @@ height:100vh;
 const Ingreso=styled.div`
 background-color:#F6FDFB;
 border: 3px solid #09b5c1;
-width: 380px;
-Min-Height: 30%; 
+width: 300px;
+Min-Height: 28vh; 
 border-radius:25px;
 font-size:30px;
 position:absolute;
@@ -51,8 +51,9 @@ top:32%;
 text-align:center;
 padding:10px;
 `
-const imgStyle={width: "auto",
-maxHeight: "11%" ,
+const imgStyle={width: "14%",
+
+maxHeight: "14%" ,
 position:"absolute",
 top:"1%",left:"1%"
 };
@@ -63,7 +64,7 @@ height: "45px" ,
 
 };
 
-const inputs={width: "80%", padding:"8px", borderRadius:"8px",border:"1px solid grey"};
+const inputs={width: "70%", padding:"8px", borderRadius:"8px",border:"1px solid grey"};
 const buton={width: "80%", padding:"8px", borderRadius:"8px",border:"none", backgroundColor:"#09b5c1"};
 
 
@@ -75,7 +76,14 @@ export default function Login(){
 const navigate=useNavigate()
 let dispatch=useDispatch();
 let usuario="";
+
 let isLogin=useSelector(state=>state.isloguin);
+
+React.useEffect(()=>{ if(isLogin===true||isLogin==="true" ){ navigate("./Home/Tutoriales")}},[isLogin,navigate])
+
+
+
+
 
 window.onload=function(){usuario=document.querySelector("#usuario").value};
 
@@ -89,10 +97,10 @@ return(
 
 <img src={logo} style={imgStyle} alt="logo farmasis"/>
     <Ingreso>
-	<span><h4>acceso a usuarios</h4></span> 
+	<span ><h3>acceso a usuarios</h3></span>
 	
 	<form onSubmit={handleSubmit}>
-	<ComboSearch style={inputs} />
+	<ComboSearch  />
 		<div>
 		<input style={inputs} placeholder="usuario" type="text" id="usuario" onChange={handleChangeUserImput} />
 	</div>

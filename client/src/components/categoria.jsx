@@ -4,7 +4,13 @@ import styled from "styled-components";
 
 
 const IndiceStyle=styled.div`
-width:100vw`
+overflow-y:scroll;
+height:80vh;
+width:33vw;
+min-width:370px;
+@media (max-width:900px){
+	width:100vw;
+}`
 
 
 
@@ -14,7 +20,7 @@ export default function Categoria(props){
 
 return(
 
-<IndiceStyle style={{overflowY:"scroll",height:"80vh",width:"100%"}}>{props.data.map( grupo=><Lista  lista={grupo} /> )}</IndiceStyle>
+<IndiceStyle>{props.data.map( grupo=><Lista lista={grupo} /> )}</IndiceStyle>
 
 	)
 

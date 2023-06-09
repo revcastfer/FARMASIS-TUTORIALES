@@ -40,10 +40,10 @@ let controllerPost=async(nombre,descripcion,categoria,video)=>{
 let allCategorias=await Category.findAll();
 
 
-if (typeof Category == Number){ 
+if (typeof categoria === "number"){ 
 
 try{
-const tutorial = await Tutorial.create({name:nombre,descrip:descripcion,video:"/videos/"+Date.now()+video,CategoryId:categoria});
+const tutorial = await Tutorial.create({name:nombre,descrip:descripcion,video:"/videos/"+video,CategoryId:categoria});
 return tutorial}
 catch(error){throw new Error (error)}
 }

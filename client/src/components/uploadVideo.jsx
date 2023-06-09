@@ -1,19 +1,23 @@
 import {useState,useEffect} from "react"
 import axios from "axios"
 import {ImputsReferidos,Formulario,ButonStyle,ErrorValidacion} from "./referidos.jsx"
+import {useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom'
 
 export default function Upload(){
 const [categorias,setCategorias]=useState([]);
 const [validacion,setValidacion]=useState({nombre:false,descripcion:false,categoria:false,video:false,nuevaCategoria:false});
-
+let isLogin=useSelector(state=>state.isloguin);
+let navigate=useNavigate();
 
 
 useEffect(()=>{
+if(isLogin==="false"||isLogin===false) {navigate("/")};  
 axios("/categorias")
 .then(datos=>datos.data)
 .then(datos=>setCategorias(datos));
 
-},[]  );
+},[isLogin,navigate]  );
 
 
 let selectOnChange=(e)=>{
@@ -40,17 +44,22 @@ setValidacion({...validacion,[etiqueta.id]:true}) }
 let readyForSend=()=>{
 	switch(validacion.categoria){
 case true:
-	if(validacion.nombre&&validacion.descripcion&&validacion.video)	{return true} else {return false};
-	break;
+	if(validacion.nombre&&validacion.descripcion&&validacion.video)	{return true} else return false;
+	
 case false:
-	if(validacion.nombre&&validacion.descripcion&&validacion.nuevaCategoria){return true} else {return false};
-	break;
+	if(validacion.nombre&&validacion.descripcion&&validacion.nuevaCategoria){return true} else return false;
+	
 default: return false
 	}
 };
 
-let sendVideo=(e)=>{e.preventDefault();
+let sendVideo=async(e)=>{e.preventDefault();
+
+
 if (readyForSend()){
+navigate("/Home/Tutoriales");
+alert("tutorial en carga, se notificara en cuanto termine la carga" );
+	
 
 let nombre=document.getElementById("nombre").value;
 let descripcion=document.getElementById("descripcion").value;
@@ -58,7 +67,7 @@ let categoria=document.getElementById("categoria").value;
 let video=document.getElementById("video").files[0];
 let nuevaCategoria=document.getElementById("nuevaCategoria").value;
 
-
+console.log(video.filename);
 const form = new FormData();
 form.append("nombre",nombre);
 form.append("descripcion",descripcion);
@@ -69,12 +78,10 @@ form.append("video",video);
 
 const datosCompletos=Object.fromEntries(form.entries());
 
-axios.post("http://localhost:3002/farmasistutorials",datosCompletos, {
-  headers: {
-    "Content-Type": "multipart/form-data"}
-  })
- .catch((err) => ("Error occured: " + err));
-alert("tutorial correctamente subido")}
+await axios.post(axios.defaults.baseURL+'/farmasistutorials/',datosCompletos, {headers: {"Content-Type": "multipart/form-data"} })
+.then(res=>{alert("tutorial correctamente subido" );console.log(res.data)})
+ .catch((err) => (console.log("Error occured: " + err)));
+}
 
 
 else{alert("verificar que todos los campos esten llenos")}

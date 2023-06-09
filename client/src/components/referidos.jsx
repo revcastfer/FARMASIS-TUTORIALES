@@ -4,7 +4,8 @@ import RefeImagen from './imgs/referidos.jpeg'
 import RefeImagencompleta from './imgs/referidosCompleto.jpeg'
 import fondoHex from './imgs/fondoHexagonos.jpg'
 import axios from 'axios'
-
+import {useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom'
 
 
 
@@ -75,20 +76,20 @@ width:"100%"}
 
   export default function Referidos(){
 
+let isLogin=useSelector(state=>state.isloguin);
+let navigate=useNavigate();
 
-let readyForSend=[0,0,0,0,0,0,0]
+  	React.useEffect(()=>{        
+if(isLogin==="false"||isLogin===false) {navigate("/")};  
+},[ isLogin,navigate])
+
+
+let readyForSend={nombre:0,apellido:0,numero:0,relacion:0,nombreReferido:0, apellidoReferido:0,numeroReferido:0}
+
 let ValidateReadyForSend=()=>{
-	const suma = readyForSend.reduce((anterior, actual) => anterior + actual, 0);
+	const suma = Object.keys(readyForSend).reduce((anterior, actual) => anterior + readyForSend[actual], 0);
      if(suma===7){return true} else return false};
 
-
-let nombre=document.getElementById("nombre");
-let apellido=document.getElementById("apellido");
-let numero=document.getElementById("numero");
-let relacion=document.getElementById("relacion");
-let nombreReferido=document.getElementById("nombreReferido");
-let apellidoReferido=document.getElementById("apellidoReferido");
-let numeroReferido=document.getElementById("numeroReferido");
 
 
 
@@ -96,42 +97,25 @@ let validate=(e)=>{
 let validarNoNumeros=new RegExp('[0-9]');
 let validarLetras=new RegExp('[a-zA-Z]');
 
-let nombreVal=document.getElementById("nombreVal");
-let apellidoVal=document.getElementById("apellidoVal");
-let numeroVal=document.getElementById("numeroVal");
-let relacionVal=document.getElementById("relacionVal");
-let nombreReferidoVal=document.getElementById("nombreReferidoVal");
-let apellidoReferidoVal=document.getElementById("apellidoReferidoVal");
-let numeroReferidoVal=document.getElementById("numeroReferidoVal");
 
 
-let valor=e.target.value;
-let id=e.target.id;
+let changeAtError=(id,valor)=>{
+document.getElementById(id+"Val").style.visibility=valor};
 
-switch(id){
-case "nombre":
-if(validarNoNumeros.test(valor)||nombre.value===""||nombre.value===" "){nombreVal.style.visibility="visible";readyForSend[1]=0}else{nombreVal.style.visibility="hidden";readyForSend[1]=1};
-break;
-case "apellido":
-if(validarNoNumeros.test(valor)||apellido.value===""||apellido.value===" "){apellidoVal.style.visibility="visible";readyForSend[2]=0}else{apellidoVal.style.visibility="hidden";readyForSend[2]=1};
-break;
-case "relacion":
-if(validarNoNumeros.test(valor)||relacion.value===""||relacion.value===" "){relacionVal.style.visibility="visible";readyForSend[3]=0}else{relacionVal.style.visibility="hidden";readyForSend[3]=1};
-break;
-case "nombreReferido":
-if(validarNoNumeros.test(valor)||nombreReferido.value===""||nombreReferido.value===" "){nombreReferidoVal.style.visibility="visible";readyForSend[4]=0}else{nombreReferidoVal.style.visibility="hidden";readyForSend[4]=1};
-break;
-case "apellidoReferido":
-if(validarNoNumeros.test(valor)||apellidoReferido.value===""||apellidoReferido.value===" "){apellidoReferidoVal.style.visibility="visible";readyForSend[5]=0}else{apellidoReferidoVal.style.visibility="hidden";readyForSend[5]=1};
-break;
-case "numero":
-if(validarLetras.test(valor)||numero.value===""||numero.value===" "){numeroVal.style.visibility="visible";readyForSend[6]=0}else{numeroVal.style.visibility="hidden";readyForSend[6]=1};
-break;
-case "numeroReferido":
-if(validarLetras.test(valor)||numeroReferido.value===""||numeroReferido.value===" "){numeroReferidoVal.style.visibility="visible";readyForSend[7]=0}else{numeroReferidoVal.style.visibility="hidden";readyForSend[7]=1};
-break;
-default: 
+let etiqueta=e.target;
+
+
+if(etiqueta.id==="numero"||etiqueta.id==="numeroReferido"){
+
+	if(validarLetras.test(etiqueta.value)||etiqueta.value===""||etiqueta.value===" ")
+		{changeAtError(etiqueta.id,"visible");readyForSend[etiqueta.id]=0}else{changeAtError(etiqueta.id,"hidden");readyForSend[etiqueta.id]=1};
+
+}else{
+
+	if(validarNoNumeros.test(etiqueta.value)|| etiqueta.value===""||etiqueta.value===" ")
+		{changeAtError(etiqueta.id,"visible");readyForSend[etiqueta.id]=0}else{changeAtError(etiqueta.id,"hidden");readyForSend[etiqueta.id]=1};
 }
+
 
 }
 
@@ -143,13 +127,13 @@ e.preventDefault();
 
 if(ValidateReadyForSend()){
 
-axios.post("/referidos",{nombre:nombre.value,
-	                                         apellido:apellido.value,
-	                                         numero:numero.value,
-	                                         relacion:relacion.value,
-	                                         nombreReferido:nombreReferido.value,
-	                                         apellidoReferido:apellidoReferido.value,
-	                                         numeroReferido:numeroReferido.value})
+axios.post("/referidos",{nombre:document.getElementById("nombre").value,
+	                                         apellido:document.getElementById("apellido").value,
+	                                         numero:document.getElementById("numero").value,
+	                                         relacion:document.getElementById("relacion").value,
+	                                         nombreReferido:document.getElementById("nombreReferido").value,
+	                                         apellidoReferido:document.getElementById("apellidoReferido").value,
+	                                         numeroReferido:document.getElementById("numeroReferido").value})
 	.then(function (response) {
     console.log(response);
   })
