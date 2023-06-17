@@ -20,7 +20,7 @@ export default function Categoria(props){
 
 return(
 
-<IndiceStyle>{props.data.map( grupo=><Lista lista={grupo} /> )}</IndiceStyle>
+<IndiceStyle>{props.data.map( grupo=><Lista  lista={grupo} /> )}</IndiceStyle>
 
 	)
 

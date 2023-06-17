@@ -17,7 +17,10 @@ const Formulario=styled.form`
 width:50%;
 position:relative;
 background-image:url(${fondoHex});
-background-size:contain`;
+background-size:contain;
+@media (max-width:700px){
+width:100%;}`;
+
 
 const ImputsReferidos=styled.input`
 display:inline;
@@ -60,7 +63,9 @@ justify-content:center;
 background-image:url(${RefeImagencompleta});
 @media (max-width:900px){
 background-image:url(${RefeImagen});
-right:0px}
+right:0px};
+@media (max-width:700px){
+display:none
 `
 
 const formCentrar={position:"absolute",left:"8%", top:"7%",
@@ -175,9 +180,9 @@ return(
 
 		</Formulario>
 
-		<ImagenesDerecha>
+		<ImagenesDerecha/>
 		
-		</ImagenesDerecha>
+		
 
 
 

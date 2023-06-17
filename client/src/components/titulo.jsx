@@ -8,7 +8,7 @@ import axios from 'axios'
 //videos debajo titulo a menos de 900px
 const VideoDiv=styled.div`
 display:block;
-width: 100%;
+position:relative;
 
 @media (min-width:900px){
 	display:none;
@@ -31,12 +31,17 @@ cursor: pointer;
 const MenuStyle2=styled.li`
 
 display:flex;
-font-size:40px;
-margin:20px;
+font-size:45px;
+padding:0px 0px 30px 25px;
+
+@media (max-width:500px){
+    font-size:20px;}
+
 color:grey;
 cursor: default;
 @media screen and (min-width:900px){
-	display:none}
+	display:none
+}
 
  `
 
@@ -84,9 +89,8 @@ let onPlayVideo=(e)=>{
 		{  nameObjs.map(  name=><div key={name}>
 
 			<MenuStyle id={name} className="null" onClick={()=>handleClick(name)} > {name} </MenuStyle>
-			<MenuStyle2 id={name} className="null" > {name} </MenuStyle2>
-			<VideoDiv> <video id={"Video"+name} onPlay={onPlayVideo} style={ {height:"48vh",width:"85vw"}} controls="controls" src={axios.defaults.baseURL+search(name).video}/></VideoDiv> 
-
+			<VideoDiv> <video id={"Video"+name} onPlay={onPlayVideo} style={ {width:"100vw"}} controls="controls" src={axios.defaults.baseURL+search(name).video}/></VideoDiv> 
+            <MenuStyle2 id={name} className="null" > {name} </MenuStyle2>
 			</div>  )  }
 	   </div>)
 
