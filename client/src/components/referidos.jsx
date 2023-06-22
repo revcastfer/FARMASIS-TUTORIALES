@@ -19,7 +19,9 @@ position:relative;
 background-image:url(${fondoHex});
 background-size:contain;
 @media (max-width:700px){
-width:100%;}`;
+width:100%;
+`
+;
 
 
 const ImputsReferidos=styled.input`

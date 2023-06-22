@@ -6,6 +6,7 @@ import {Routes,Route } from 'react-router-dom'
 import Tutoriales from './components/Tutoriales.jsx'
 import Referidos from './components/referidos.jsx'
 import Upload from './components/uploadVideo.jsx'
+import Player from './components/player.jsx'
 
 
 document.body.style.margin="0px";
@@ -23,6 +24,7 @@ function App() {
            <Route path="Referidos" element={<Referidos/>} / >
            <Route path="Upload" element={<Upload/>} / >
           </Route>
+          <Route path="/player/:name" element={<Player />} /> 
      
 
     </Routes>

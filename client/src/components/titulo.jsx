@@ -2,7 +2,8 @@ import {useDispatch} from 'react-redux';
 import {selectVideo} from './redux/actions';
 import {useState} from "react";
 import styled from "styled-components";
-import axios from 'axios'
+import axios from 'axios';
+import {useNavigate} from "react-router-dom"
 
 
 //videos debajo titulo a menos de 900px
@@ -52,7 +53,8 @@ export default function Titulo(props){
 
 
 let [videoSelected,setVideoSelected]=useState("")
-let dispatch=useDispatch();	
+let dispatch=useDispatch();
+let navigate=useNavigate()	
 let nameObjs=[];
 for (let obj in props.objeto){nameObjs.push(props.objeto[obj].name)};
 
@@ -75,10 +77,12 @@ for (let i = 0; i < collection.length; i++) {
  selected.color="orange";
  selected.fontWeight='bold' }
 
-let onPlayVideo=(e)=>{ 
-	if(videoSelected===""){ setVideoSelected(e.target.id)}
-	else{document.getElementById(videoSelected).pause();setVideoSelected( e.target.id)}
 
+let onClick=(e)=>{
+	let videoParams= e.target.src.split("/")[4];
+	navigate("/player/"+videoParams)
+	//console.log(document.getElementById(e.target.id));
+	//console.log(this);
 
 }
 
@@ -89,7 +93,7 @@ let onPlayVideo=(e)=>{
 		{  nameObjs.map(  name=><div key={name}>
 
 			<MenuStyle id={name} className="null" onClick={()=>handleClick(name)} > {name} </MenuStyle>
-			<VideoDiv> <video id={"Video"+name} onPlay={onPlayVideo} style={ {width:"100vw"}} controls="controls" src={axios.defaults.baseURL+search(name).video}/></VideoDiv> 
+			<VideoDiv> <video id={"Video"+name}  onClick={onClick} style={ {width:"100vw"}}  src={axios.defaults.baseURL+search(name).video}/></VideoDiv> 
             <MenuStyle2 id={name} className="null" > {name} </MenuStyle2>
 			</div>  )  }
 	   </div>)

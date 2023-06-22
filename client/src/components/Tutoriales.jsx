@@ -10,7 +10,8 @@ import axios from 'axios'
 
 
 const Titulovideos=styled.h1`
-font-size: 44px;color: #f5b041;
+font-size: 44px;
+color: #f5b041;
 left:0px
 `;
 
@@ -76,7 +77,6 @@ return	(
 		{titulo?<Titulovideos>{titulo}</Titulovideos>:null}
 		{url?<div style={ {width:"61vw",height:"50vh"}}><video style={ {width:"50vw",height:"50vh",position:"relative",left:"8%"}}controls="controls" src={url}/  ></div>:null}
 		{descripcion?<Descripcionvideos>{descripcion}</Descripcionvideos>:null}
-
 	</Reproductor>
 	</ContenedorVideos>
 )
