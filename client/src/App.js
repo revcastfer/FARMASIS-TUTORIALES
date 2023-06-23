@@ -10,6 +10,7 @@ import Player from './components/player.jsx'
 
 
 document.body.style.margin="0px";
+document.body.style.overflow="hidden"
 
 function App() {
   
@@ -24,7 +25,10 @@ function App() {
            <Route path="Referidos" element={<Referidos/>} / >
            <Route path="Upload" element={<Upload/>} / >
           </Route>
-          <Route path="/player/:name" element={<Player />} /> 
+
+          <Route path="/player/:name/:url" element={<Player />} >
+           <Route path="" element={<Tutoriales/>}/ >
+          </Route>
      
 
     </Routes>

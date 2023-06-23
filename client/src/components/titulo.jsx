@@ -79,8 +79,9 @@ for (let i = 0; i < collection.length; i++) {
 
 
 let onClick=(e)=>{
-	let videoParams= e.target.src.split("/")[4];
-	navigate("/player/"+videoParams)
+	let videoName=e.target.id;
+	let videoUrl= e.target.src.split("/")[4];
+	navigate("/player/"+videoName+"/"+videoUrl)
 	//console.log(document.getElementById(e.target.id));
 	//console.log(this);
 
@@ -93,7 +94,7 @@ let onClick=(e)=>{
 		{  nameObjs.map(  name=><div key={name}>
 
 			<MenuStyle id={name} className="null" onClick={()=>handleClick(name)} > {name} </MenuStyle>
-			<VideoDiv> <video id={"Video"+name}  onClick={onClick} style={ {width:"100vw"}}  src={axios.defaults.baseURL+search(name).video}/></VideoDiv> 
+			<VideoDiv> <video id={name}   onClick={onClick} style={ {width:"100vw"}}  src={axios.defaults.baseURL+search(name).video}/></VideoDiv> 
             <MenuStyle2 id={name} className="null" > {name} </MenuStyle2>
 			</div>  )  }
 	   </div>)
