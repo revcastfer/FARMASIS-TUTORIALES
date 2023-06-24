@@ -56,10 +56,15 @@ const InicialLetter=styled.div`
     justify-content:center;
     align-items:center;
     @media (max-width:600px){
-          font-size:25px;
-          width:40px;
-          height:40px;
-}`
+          font-size:20px;
+          width:35px;
+          height:35px};
+@media (max-width:300px){
+          font-size:10px;
+          width:20px;
+          height:20px;
+}
+`
 
 const Navbar=styled.div`
 position: relative;
@@ -90,9 +95,11 @@ font-weight:bold;
 @media (max-width:600px){
 top:40%;
 right:60px;
-font-size:20px
-
-}`
+font-size:20px};
+@media (max-width:300px){
+          font-size:13px;
+          right:30px;
+         }`
 
 const DivOpcionsNav=styled.div`
 position: relative;
@@ -104,7 +111,16 @@ font-size:30px;
 @media (max-width:900px){
 justify-content:space-around;
 width:100%;
-font-size:20px;
+font-size:25px;
+left:0px;
+};
+@media (max-width:500px){
+font-size:18px;
+}
+@media (max-width:300px){
+justify-content:space-around;
+width:100%;
+font-size:10px;
 left:0px;
 }`
 
