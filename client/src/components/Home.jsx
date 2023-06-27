@@ -95,7 +95,7 @@ font-weight:bold;
 @media (max-width:600px){
 top:40%;
 right:60px;
-font-size:20px};
+font-size:15px};
 @media (max-width:300px){
           font-size:13px;
           right:30px;

@@ -61,15 +61,15 @@ cargaData=()=>{
  
 
 
-  const codBarras=Tutorial.create({name:"codigo de barras" , descrip:"implementar codigo de barras a los productos" ,
+  const codBarras=Tutorial.create({name:"Codigo de barras" , descrip:"implementar codigo de barras a los productos" ,
                                    video:"/videos/exCodBarras.m4v", CategoryId:3 });
-  const facturaA4=Tutorial.create({name:"facturas en A4" , descrip:"como estraer las facturas en formato A4 para su respectivo envio por wasap o correo" ,
+  const facturaA4=Tutorial.create({name:"Facturas en A4" , descrip:"como estraer las facturas en formato A4 para su respectivo envio por wasap o correo" ,
                                    video:"/videos/exFacturaA4.m4v", CategoryId:3 });
-  const faltaDeStock=Tutorial.create({name:"reporte de falat de stock" , descrip:"como llenar el reporte de falta de stock" ,
+  const faltaDeStock=Tutorial.create({name:"Reporte de falat de stock" , descrip:"como llenar el reporte de falta de stock" ,
                                    video:"/videos/exPorFaltaStock.m4v", CategoryId:3 });
-  const regVentas=Tutorial.create({name:"registro de ventas" , descrip:"extraer el registro de ventas para el area contable" ,
+  const regVentas=Tutorial.create({name:"Registro de ventas" , descrip:"extraer el registro de ventas para el area contable" ,
                                    video:"/videos/exRegVentas.m4v", CategoryId:2 });
-  const sunatAnulacionResumen=Tutorial.create({name:"sunat anulacion-resumenes" , descrip:"comunicacion de anulaciones a sunat y envio de boletas  por resumnes " ,
+  const sunatAnulacionResumen=Tutorial.create({name:"Sunat anulacion-resumenes" , descrip:"comunicacion de anulaciones a sunat y envio de boletas  por resumnes " ,
                                      video:"/videos/exSunatAnulacionResumen.m4v", CategoryId:3 });
 }
 

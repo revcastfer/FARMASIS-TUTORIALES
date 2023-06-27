@@ -10,7 +10,14 @@ import {useNavigate} from 'react-router-dom'
 
 
 
-const ErrorValidacion=styled.span`color:red;font-size:13px;display:inline;visibility:hidden`;
+const ErrorValidacion=styled.span`
+color:red;
+font-size:13px;
+display:inline;
+visibility:hidden;
+@media (max-width:700px){
+font-size:8px;
+}`;
 
 
 const Formulario=styled.form`
@@ -30,7 +37,14 @@ margin:15px;
 height:30px;
 width:50%;
 border-radius:10px;
-border: 1px solid grey`;
+border: 1px solid grey;
+@media (max-width:700px){
+height:20px;
+font-size:10px;
+margin:10px;
+}
+`;
+
 
 const TipoDatos=styled.div`
 color:#09b5c1;

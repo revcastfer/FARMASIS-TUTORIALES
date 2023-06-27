@@ -11,7 +11,10 @@ display:"inline"
 const GrupoStylo=styled.h3`
 color:#01578c;
 display:inline;
-font-size:35px
+font-size:35px;
+@media (max-width:450px){
+    font-size:15px;}
+
 `
 
 const ListaStyle=styled.ul`

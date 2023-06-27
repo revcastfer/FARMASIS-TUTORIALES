@@ -7,13 +7,17 @@ const Cerrar=styled.div`
 position:absolute;
 top:0px;
 right:0px;
-padding:2.3%;
-background-color:#ECECEC;
-opacity:0.3;
+padding:1%;
+background-color:#737272;
+opacity:0.6;
 border-radius:2px
 `;
 const Titulo=styled.div`
-font-size:25px;
+font-size:20px;
+color:#f5b041;
+text-align:center
+
+
 
 `
 
@@ -31,8 +35,8 @@ return(
 	
 	<video style={videoStyle} controls="controls" autoPlay="true" src={axios.defaults.baseURL+"/videos/"+url}/ >
 	<Cerrar onClick={retornar}>X</Cerrar>
-	<Titulo><b>{titulo}</b></Titulo>
-	<hr/>
+	<Titulo>{titulo}</Titulo>
+
 
 
 <Outlet/>

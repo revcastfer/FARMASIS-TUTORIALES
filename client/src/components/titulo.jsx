@@ -10,7 +10,6 @@ import {useNavigate} from "react-router-dom"
 const VideoDiv=styled.div`
 display:block;
 position:relative;
-
 @media (min-width:900px){
 	display:none;
 }
@@ -28,23 +27,39 @@ cursor: pointer;
 }
 
  `
-//menu a menos de 900px
+//menu a menos de 500px
 const MenuStyle2=styled.li`
 
 display:flex;
-font-size:45px;
-padding:0px 0px 30px 25px;
-
-@media (max-width:500px){
-    font-size:20px;}
-
+font-size:25px;
 color:grey;
 cursor: default;
+width:100vw;
+padding:0px 0px 10px 15px;
+
+@media (max-width:500px){
+    font-size:10px}
+
+
 @media screen and (min-width:900px){
 	display:none
 }
 
  `
+
+const VideoLink=styled.video`
+width:100vw;
+@media (min-width:450px){
+ width:440px }
+`;
+
+const Descripcion=styled.div`
+font-size:8px;
+color:red;
+width:60%;
+
+text-align:center
+`;
 
 
 
@@ -55,9 +70,6 @@ export default function Titulo(props){
 let [videoSelected,setVideoSelected]=useState("")
 let dispatch=useDispatch();
 let navigate=useNavigate()	
-let nameObjs=[];
-for (let obj in props.objeto){nameObjs.push(props.objeto[obj].name)};
-
 
 
 let search=(titulo)=>{
@@ -83,19 +95,19 @@ let onClick=(e)=>{
 	let videoUrl= e.target.src.split("/")[4];
 	navigate("/player/"+videoName+"/"+videoUrl)
 	//console.log(document.getElementById(e.target.id));
-	//console.log(this);
+	
 
 }
 
-
+console.log(props.objeto);
 
 	return(
 		<div >
-		{  nameObjs.map(  name=><div key={name}>
+		{  props.objeto.map(  ele=><div key={ele.name}>
 
-			<MenuStyle id={name} className="null" onClick={()=>handleClick(name)} > {name} </MenuStyle>
-			<VideoDiv> <video id={name}   onClick={onClick} style={ {width:"100vw"}}  src={axios.defaults.baseURL+search(name).video}/></VideoDiv> 
-            <MenuStyle2 id={name} className="null" > {name} </MenuStyle2>
+			<MenuStyle id={ele.name} className="null" onClick={()=>handleClick(ele.name)} > {ele.name} </MenuStyle>
+			<VideoDiv> <VideoLink id={ele.name} onClick={onClick}  src={axios.defaults.baseURL+search(ele.name).video}/> </VideoDiv> 
+            <MenuStyle2 id={ele.name} className="null" > {ele.name} <div style={{display:"flex",justifyContent:"center"}}><Descripcion>{ele.descrip}</Descripcion> </div></MenuStyle2>
 			</div>  )  }
 	   </div>)
 
