@@ -10,7 +10,11 @@ width:33vw;
 min-width:370px;
 @media (max-width:900px){
 	width:100vw;
-}`
+	height:85vh;
+};@media (max-width:400px){
+	height:70vh;
+}
+`
 
 
 

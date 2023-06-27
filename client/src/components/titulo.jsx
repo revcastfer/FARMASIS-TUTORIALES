@@ -1,4 +1,4 @@
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import {selectVideo} from './redux/actions';
 import {useState} from "react";
 import styled from "styled-components";
@@ -39,8 +39,6 @@ padding:0px 0px 10px 15px;
 
 @media (max-width:500px){
     font-size:10px}
-
-
 @media screen and (min-width:900px){
 	display:none
 }
@@ -49,14 +47,15 @@ padding:0px 0px 10px 15px;
 
 const VideoLink=styled.video`
 width:100vw;
-@media (min-width:450px){
- width:440px }
+
 `;
 
 const Descripcion=styled.div`
 font-size:8px;
 color:red;
-width:60%;
+width:80%;
+@media (min-width:500px){
+    font-size:13px}
 
 text-align:center
 `;
@@ -69,7 +68,10 @@ export default function Titulo(props){
 
 let [videoSelected,setVideoSelected]=useState("")
 let dispatch=useDispatch();
-let navigate=useNavigate()	
+let navigate=useNavigate();
+let player=useSelector(state=>state.player);
+
+
 
 
 let search=(titulo)=>{
@@ -106,7 +108,7 @@ console.log(props.objeto);
 		{  props.objeto.map(  ele=><div key={ele.name}>
 
 			<MenuStyle id={ele.name} className="null" onClick={()=>handleClick(ele.name)} > {ele.name} </MenuStyle>
-			<VideoDiv> <VideoLink id={ele.name} onClick={onClick}  src={axios.defaults.baseURL+search(ele.name).video}/> </VideoDiv> 
+			<VideoDiv> <VideoLink style={{width:player?"440px":"100vw"}} id={ele.name} onClick={onClick}  src={axios.defaults.baseURL+search(ele.name).video}/> </VideoDiv> 
             <MenuStyle2 id={ele.name} className="null" > {ele.name} <div style={{display:"flex",justifyContent:"center"}}><Descripcion>{ele.descrip}</Descripcion> </div></MenuStyle2>
 			</div>  )  }
 	   </div>)
