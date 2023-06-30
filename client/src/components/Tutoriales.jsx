@@ -1,12 +1,11 @@
 import React from 'react';
 import Categoria from './categoria';
 import styled from "styled-components";
-import {useSelector} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom'
 import fondoHex from './imgs/fondoHexagonos.jpg'
 import axios from 'axios'
-
-
+import {playerChange} from "./redux/actions"
 
 
 const Titulovideos=styled.h1`
@@ -52,6 +51,7 @@ export default function Tutoriales(){
 let [data,setData]=React.useState([]);
 let isLogin=useSelector(state=>state.isloguin)
 let navigate=useNavigate();
+const playerChange=""+useSelector(state=>state.player)
 
 
 
@@ -61,8 +61,9 @@ if(isLogin==="false"||isLogin===false) {navigate("/")};
 axios("farmasistutorials")
 .then(datos=>datos.data)
 .then(datos=>setData(datos));
-  
-},[ isLogin,navigate])
+  },[ isLogin,navigate]);
+
+ 
 
 
 
@@ -71,11 +72,11 @@ let descripcion=useSelector((state)=>state.descripcion);
 let url=useSelector((state)=>state.url);
 
 return	(	
-   <ContenedorVideos>
+   <ContenedorVideos >
 	<Categoria data={data} />
-	<Reproductor>
+	<Reproductor style={{display:playerChange==="true"?"none":null}}>
 		{titulo?<Titulovideos>{titulo}</Titulovideos>:null}
-		{url?<div style={ {width:"61vw",height:"50vh"}}><video style={ {width:"50vw",height:"50vh",position:"relative",left:"8%"}}controls="controls" src={url}/  ></div>:null}
+		{url?<div style={ {width:"61vw",height:"50vh"}}><video id="reproductor" style={ {width:"50vw",height:"50vh",position:"relative",left:"8%"}}controls="controls" src={url}/  ></div>:null}
 		{descripcion?<Descripcionvideos>{descripcion}</Descripcionvideos>:null}
 	</Reproductor>
 	</ContenedorVideos>

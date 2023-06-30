@@ -4,6 +4,7 @@ import {useState} from "react";
 import styled from "styled-components";
 import axios from 'axios';
 import {useNavigate} from "react-router-dom"
+import {playerChange} from "./redux/actions"
 
 
 //videos debajo titulo a menos de 900px
@@ -38,7 +39,7 @@ width:100vw;
 padding:0px 0px 10px 15px;
 
 @media (max-width:500px){
-    font-size:10px}
+    font-size:15px}
 @media screen and (min-width:900px){
 	display:none
 }
@@ -69,7 +70,7 @@ export default function Titulo(props){
 let [videoSelected,setVideoSelected]=useState("")
 let dispatch=useDispatch();
 let navigate=useNavigate();
-let player=useSelector(state=>state.player);
+const  player=useSelector(state=>state.player);
 
 
 
@@ -95,21 +96,25 @@ for (let i = 0; i < collection.length; i++) {
 let onClick=(e)=>{
 	let videoName=e.target.id;
 	let videoUrl= e.target.src.split("/")[4];
+	dispatch(playerChange("true"));
 	navigate("/player/"+videoName+"/"+videoUrl)
 	//console.log(document.getElementById(e.target.id));
 	
 
 }
 
-console.log(props.objeto);
+
 
 	return(
 		<div >
 		{  props.objeto.map(  ele=><div key={ele.name}>
 
-			<MenuStyle id={ele.name} className="null" onClick={()=>handleClick(ele.name)} > {ele.name} </MenuStyle>
-			<VideoDiv> <VideoLink style={{width:player?"440px":"100vw"}} id={ele.name} onClick={onClick}  src={axios.defaults.baseURL+search(ele.name).video}/> </VideoDiv> 
-            <MenuStyle2 id={ele.name} className="null" > {ele.name} <div style={{display:"flex",justifyContent:"center"}}><Descripcion>{ele.descrip}</Descripcion> </div></MenuStyle2>
+			<MenuStyle id={ele.name} style={{display:player==="true"?"none":null}} className="null" onClick={()=>handleClick(ele.name)} > {ele.name} </MenuStyle>
+			<VideoDiv> <VideoLink style={{width:player?"20%":"100vw",minWidth:player?"250px":null}} id={ele.name} onClick={onClick}  src={axios.defaults.baseURL+search(ele.name).video}/> </VideoDiv> 
+            <MenuStyle2 id={ele.name}   className="null" > {ele.name} 
+                         <div style={{display:player==="true"?"none":"flex",justifyContent:"center"}}>
+                        <Descripcion >{ele.descrip}</Descripcion> </div>
+            </MenuStyle2>
 			</div>  )  }
 	   </div>)
 

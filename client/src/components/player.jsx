@@ -2,12 +2,14 @@ import Categoria from "./categoria.jsx"
 import {Outlet,useParams,useNavigate} from "react-router-dom"
 import axios from 'axios';
 import styled from "styled-components"
+import {useDispatch} from 'react-redux';
+import {playerChange} from "./redux/actions"
 
 const Cerrar=styled.div`
 position:absolute;
 top:0px;
 right:0px;
-padding:1%;
+padding:2%;
 background-color:#737272;
 opacity:0.6;
 border-radius:2px
@@ -25,8 +27,9 @@ export default function Player(){
 let titulo=useParams().name;
 let url=useParams().url;
 let navigate=useNavigate();
+let dispatch=useDispatch()
 
-let retornar=()=>{navigate("/home/Tutoriales")}
+let retornar=()=>{dispatch(playerChange(false)); navigate("/home/Tutoriales")}
 
  let videoStyle={height:"10%",width:"100%",overflow:"visible",position:"relative",top:"0px"};
 
@@ -35,7 +38,7 @@ return(
 	
 	<video style={videoStyle} controls="controls" autoPlay="true" src={axios.defaults.baseURL+"/videos/"+url}/ >
 	<Cerrar onClick={retornar}>X</Cerrar>
-	<Titulo>{titulo}</Titulo>
+	<Titulo >{titulo}</Titulo>
 
 
 
