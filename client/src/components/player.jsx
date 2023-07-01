@@ -18,10 +18,12 @@ const Titulo=styled.div`
 font-size:20px;
 color:#f5b041;
 text-align:center
-
-
-
 `
+
+const ContenedorVideo=styled.div`
+display:flex;
+justify-content:center;
+background-color:black`;
 
 export default function Player(){
 let titulo=useParams().name;
@@ -31,12 +33,12 @@ let dispatch=useDispatch()
 
 let retornar=()=>{dispatch(playerChange(false)); navigate("/home/Tutoriales")}
 
- let videoStyle={height:"10%",width:"100%",overflow:"visible",position:"relative",top:"0px"};
+ let videoStyle={height:"10%",width:"100%",overflow:"visible",position:"relative",top:"0px",maxWidth:"550px"};
 
 return(
-	<div >
+	<div  >
 	
-	<video style={videoStyle} controls="controls" autoPlay="true" src={axios.defaults.baseURL+"/videos/"+url}/ >
+	<ContenedorVideo ><video style={videoStyle} controls="controls" autoPlay="true" src={axios.defaults.baseURL+"/videos/"+url}/></ContenedorVideo>
 	<Cerrar onClick={retornar}>X</Cerrar>
 	<Titulo >{titulo}</Titulo>
 

@@ -5,12 +5,11 @@ import {useSelector} from 'react-redux';
 
 
 const IndiceStyle=styled.div`
-overflow-y:scroll;
-width:33vw;
+overflow-y:auto;
+width:28vw;
 min-width:370px;
 @media (max-width:900px){
 	width:100%;
-	
 }`
 
 
@@ -23,7 +22,7 @@ let player=""+useSelector(state=>state.player);
 
 return(
 
-<IndiceStyle style={{height:player==="true"?"70vh":"94vh"}}>{props.data.map( grupo=><Lista  lista={grupo} /> )}</IndiceStyle>
+<IndiceStyle style={{height:player==="true"?"400px":"678px"}}>{props.data.map( grupo=><Lista  lista={grupo} /> )}</IndiceStyle>
 
 	)
 

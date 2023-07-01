@@ -33,7 +33,7 @@ minWidth:30vh;
 `
 
 const UserName=styled.span`
-    	font-size:35px;
+    	font-size:30px;
     	font-weight: bold;
 	color:#033953;
 	@media (max-width:900px){
@@ -107,11 +107,10 @@ display:flex;
 justify-content: space-around;
 width:75%;
 left:20%;
-font-size:30px;
+font-size:25px;
 @media (max-width:900px){
 justify-content:space-around;
 width:100%;
-font-size:25px;
 left:0px;
 };
 @media (max-width:500px){

@@ -74,9 +74,9 @@ let url=useSelector((state)=>state.url);
 return	(	
    <ContenedorVideos >
 	<Categoria data={data} />
-	<Reproductor style={{display:playerChange==="true"?"none":null}}>
+	<Reproductor >
 		{titulo?<Titulovideos>{titulo}</Titulovideos>:null}
-		{url?<div style={ {width:"61vw",height:"50vh"}}><video id="reproductor" style={ {width:"50vw",height:"50vh",position:"relative",left:"8%"}}controls="controls" src={url}/  ></div>:null}
+		{url?<div style={ {width:"65vw"}}><video id="reproductor" style={ {height:"52vh",position:"relative",left:"8%",}}controls="controls" src={url}/  ></div>:null}
 		{descripcion?<Descripcionvideos>{descripcion}</Descripcionvideos>:null}
 	</Reproductor>
 	</ContenedorVideos>

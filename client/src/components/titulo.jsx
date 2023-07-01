@@ -19,7 +19,7 @@ position:relative;
 //menu a mas de 900px
 const MenuStyle=styled.li`
 display:flex;
-font-size:24px;
+font-size:20px;
 color:grey;
 padding:5px;
 cursor: pointer;
@@ -28,7 +28,7 @@ cursor: pointer;
 }
 
  `
-//menu a menos de 500px
+//menu a menos de 900-500px
 const MenuStyle2=styled.li`
 
 display:flex;
@@ -39,7 +39,7 @@ width:100vw;
 padding:0px 0px 10px 15px;
 
 @media (max-width:500px){
-    font-size:15px}
+    font-size:12px}
 @media screen and (min-width:900px){
 	display:none
 }
@@ -55,10 +55,9 @@ const Descripcion=styled.div`
 font-size:8px;
 color:red;
 width:80%;
+text-align:center;
 @media (min-width:500px){
     font-size:13px}
-
-text-align:center
 `;
 
 
@@ -109,8 +108,10 @@ let onClick=(e)=>{
 		<div >
 		{  props.objeto.map(  ele=><div key={ele.name}>
 
-			<MenuStyle id={ele.name} style={{display:player==="true"?"none":null}} className="null" onClick={()=>handleClick(ele.name)} > {ele.name} </MenuStyle>
-			<VideoDiv> <VideoLink style={{width:player?"20%":"100vw",minWidth:player?"250px":null}} id={ele.name} onClick={onClick}  src={axios.defaults.baseURL+search(ele.name).video}/> </VideoDiv> 
+			<MenuStyle id={ele.name}  className="null" onClick={()=>handleClick(ele.name)} > {ele.name} </MenuStyle>
+			<VideoDiv> 
+			  <VideoLink style={{width:"100vw",maxWidth:player?"350px":null}} id={ele.name} onClick={onClick}  src={axios.defaults.baseURL+search(ele.name).video}/>
+			</VideoDiv> 
             <MenuStyle2 id={ele.name}   className="null" > {ele.name} 
                          <div style={{display:player==="true"?"none":"flex",justifyContent:"center"}}>
                         <Descripcion >{ele.descrip}</Descripcion> </div>
