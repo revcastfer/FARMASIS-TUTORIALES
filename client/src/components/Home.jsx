@@ -107,7 +107,8 @@ display:flex;
 justify-content: space-around;
 width:75%;
 left:20%;
-font-size:25px;
+font-size:23px;
+
 @media (max-width:900px){
 justify-content:space-around;
 width:100%;
