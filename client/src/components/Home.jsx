@@ -37,10 +37,13 @@ const UserName=styled.span`
     	font-weight: bold;
 	color:#033953;
 	@media (max-width:900px){
-	font-size:25px;
+	font-size:25px};
 	@media (max-width:600px){
-	font-size:15px;
-}`
+	font-size:15px};
+  @media (max-width:400px){
+	font-size:13px};
+
+	`
 	
 
 

@@ -4,13 +4,8 @@ import Select from 'react-select';
 
 
 const demo=[
-	{label:"farmacia1",value:"farmacia1"},
-	{label:"farmacia2",value:"farmacia2"},
-	{label:"farmacia3",value:"farmacia3"},
-	{label:"farmacia4",value:"farmacia4"},
-	{label:"farmacia5",value:"farmacia5"},
-	{label:"farmacia6",value:"farmacia6"},
-	{label:"farmacia7",value:"farmacia7"}
+	{label:"CFC SYSTEMS",value:"0"},
+	{label:"Administrador",value:"1"},
 	];
 
 

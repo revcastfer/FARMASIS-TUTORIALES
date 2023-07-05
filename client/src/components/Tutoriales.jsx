@@ -1,11 +1,11 @@
 import {useState,useEffect} from 'react';
 import Categoria from './categoria';
 import styled from "styled-components";
-import {useDispatch,useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom'
 import fondoHex from './imgs/fondoHexagonos.jpg'
 import axios from 'axios'
-import {playerChange} from "./redux/actions"
+
 
 
 const Titulovideos=styled.h1`
@@ -52,7 +52,7 @@ export default function Tutoriales(){
 let [data,setData]=useState([]);
 let isLogin=useSelector(state=>state.isloguin)
 let navigate=useNavigate();
-const playerChange=""+useSelector(state=>state.player);
+
 const [width, setWidth] = useState(window.innerWidth);
 
 

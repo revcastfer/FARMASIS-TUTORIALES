@@ -51,9 +51,17 @@ top:32%;
 text-align:center;
 padding:10px;
 `
-const imgStyle={width: "14%",
+const Inputs=styled.input`
+width:70%;
+padding:8px;
+border-radius:8px;
+border:1px solid grey
+`;
 
-maxHeight: "14%" ,
+
+const imgStyle={
+width: "25vw",
+maxWidth:"150px",
 position:"absolute",
 top:"1%",left:"1%"
 };
@@ -64,7 +72,7 @@ height: "45px" ,
 
 };
 
-const inputs={width: "70%", padding:"8px", borderRadius:"8px",border:"1px solid grey"};
+
 const buton={width: "80%", padding:"8px", borderRadius:"8px",border:"none", backgroundColor:"#09b5c1"};
 
 
@@ -102,12 +110,12 @@ return(
 	<form onSubmit={handleSubmit}>
 	<ComboSearch  />
 		<div>
-		<input style={inputs} placeholder="usuario" type="text" id="usuario" onChange={handleChangeUserImput} />
+		<Inputs  placeholder="usuario" type="text" id="usuario" onChange={handleChangeUserImput} />
 	</div>
 	<div>
-		<input style={inputs} placeholder="Contraseña" type="password" id="contraseña"/>
+		<Inputs  placeholder="Contraseña" type="password" id="contraseña"/>
 	</div> 
-	<button type="submit" style={buton}>ingresar</button>
+	<button type="submit" style={buton}><b>ingresar</b></button>
 	</form>
 	</Ingreso>
 	<Pie><img src={logoPie} style={imgPie} alt="logo cfc"/> </Pie>
