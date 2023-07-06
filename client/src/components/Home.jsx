@@ -171,7 +171,7 @@ React.useEffect(()=>{
         <DivOpcionsNav>
 		<NavLink  to="/Home/Referidos" style={otionsLinksNavbar} >Referidos </NavLink>
 		<NavLink  to="/Home/Tutoriales" style={otionsLinksNavbar} >Video-tutoriales</NavLink>
-		{user==="cesarin"?<NavLink  to="/Home/Upload" style={otionsLinksNavbar} >subir videos</NavLink>:null}
+		{user==="Cesarin"?<NavLink  to="/Home/Upload" style={otionsLinksNavbar} >subir videos</NavLink>:null}
        </DivOpcionsNav>
 
 

@@ -7,7 +7,7 @@ try{
 let respuesta=await loginValidateController(user,password);
 res.status(200).json(respuesta)
 }
-catch(error){res.status(500).json(error.message)}
+catch(error){res.status(400).json(error.message)}
 
 
 

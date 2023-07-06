@@ -85,12 +85,13 @@ let isLogin=""+useSelector(state=>state.isloguin);
 React.useEffect(()=>{ if(isLogin==="true" ){ navigate("./Home/Tutoriales")}},[isLogin,navigate])
 
 let validateUser=async(name,password)=>{
-	let validate=await axios.post("https://localhost:3002/login",{user:name,password:password},{
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
-})
-return validate.data	
+	try{
+	let validate=await axios.post("http://localhost:3002/login",{user:name,password:password},{
+    headers:{'Content-Type': 'application/x-www-form-urlencoded'}});
+    return validate.data
+}
+catch(err){return err.response.data}	
+	
 }
 
 
@@ -101,7 +102,7 @@ let user=document.getElementById("user").value;
 let password=document.getElementById("password").value;
 let validate=await validateUser(user,password);
 
-if(validate==="true"){dispatch(loguin(user));navigate("./Home/Tutoriales")}
+if(validate===true){dispatch(loguin(user));navigate("./Home/Tutoriales")}
 else{alert(validate)}
 }
 
@@ -117,7 +118,7 @@ return(
 	<form onSubmit={handleSubmit}>
 	<ComboSearch />
 		<div>
-		<Inputs  placeholder="Password" type="text" id="password" />
+		<Inputs placeholder="Password" type="text" id="password" />
 	   </div>
 	 
 	<ButtonLogin type="submit" ><b>ingresar</b></ButtonLogin>
